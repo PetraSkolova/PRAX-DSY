@@ -15,11 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-   /* justify-content: center;  
-    min-height: 100vh; 
-    background-color: #7D4C9E; */
     margin: 0;
-
 }
 
 header {
@@ -39,14 +35,6 @@ header {
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
-}
-
-.picture {
-     font-size: 24px;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-   text-transform:inherit;  
 }
 
 nav ul {
@@ -71,15 +59,6 @@ nav ul li a:hover {
 
 /*<!--------------------------------section first------------------------------>*/
 .container {
-  /*  width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    height: 400px;
-    background-color: #87509c;
-    flex-direction: column;
-    padding-top: 1vh;  */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,13 +78,12 @@ nav ul li a:hover {
 
 #first.section {
     width: 100%;
-    min-height: 350px; 
+    min-height: 350px;
     max-width: 1440px;
     background-color: #87509c;
     color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
     padding: 75px 20px;
@@ -116,7 +94,7 @@ nav ul li a:hover {
     max-width: 1152px;
 }
 
-h1 {
+.first h1 {
     color: white
 }
 
@@ -124,9 +102,9 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 5px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .button {
@@ -147,4 +125,43 @@ h1 {
     background-color: #d68910;
 }
 /*<!--------------------------------section second------------------------------> */      
+.section-title {
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+    color: white;
+    text-align: center; 
+    margin: 75px 0px;
+    padding: 10px;
+    max-width: 1440pc;
+    width: 100%;
+}
 
+.underline {
+    width: 50px;
+    height: 5px;
+    background-color: rgba(128, 128, 128, 0.5);
+    margin: 11px auto;
+}
+
+.section-text {
+    font-size: 15px;
+}
+
+.second-container p , h1{
+    color: white;
+}
+
+.second-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw; 
+    background-color: #17c2a4;
+    padding-top: 50px;
+    padding-top: 1vh;
+    width: 100%;
+}
