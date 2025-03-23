@@ -158,10 +158,34 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 100vw; 
+    text-align: center; 
     background-color: #17c2a4;
     padding-top: 50px;
     padding-top: 1vh;
     width: 100%;
+}
+
+.cards {
+    display: flex;;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    width: 1440px;
+    margin-bottom: 150px;
+}
+
+.card {
+    text-align: center; 
+}
+
+.card img {
+    display: block; 
+    margin: 0 auto 10px; 
+}
+
+.card h4 {
+    margin: 10px 0; 
+}
+
+.card p {
+    margin: 10px 20px; 
 }
