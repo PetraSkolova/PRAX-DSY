@@ -287,3 +287,113 @@ h5 {
     width: 30px; 
     height: auto;
 }
+/*<!--------------------------------section fourth------------------------------> */      
+.fourth-container  h1{
+    color: #3c4761;
+    text-align: center;
+}
+
+.section-title-third {
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+    text-align: center; 
+    margin: 75px 0px;
+    padding: 10px;
+    max-width: 1440px;
+    width: 100%;
+    justify-content: center;
+}
+
+.fourth-container {
+    background-color: white;
+    text-align: center;
+    padding: 25px ;
+    padding-bottom: 0px;
+}
+
+.skills-section {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.skills-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.skills-section {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.skills-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.skills-section p {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    font-size: 16px;
+    color: #333;
+}
+
+.skill-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px; /* Väčšia medzera medzi kruhmi */
+    flex-wrap: wrap;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-ring {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    margin-bottom: 20px; /* Väčšia medzera medzi kruhom a popisom */
+}
+
+.progress-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Opravený smer animácie */
+}
+
+.background-ring {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 10;
+}
+
+.foreground-ring {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.skill-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.skill-label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px; /* Väčšia medzera medzi kruhom a textom */
+}
