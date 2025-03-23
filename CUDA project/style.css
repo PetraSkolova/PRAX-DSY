@@ -24,12 +24,11 @@ body {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #87509c; 
     padding: 20px 100px;
     width: 100%;
-    max-width: 1440px;
     box-sizing: border-box;
 }
 
@@ -39,6 +38,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1440px;
 }
 
 .picture {
@@ -71,6 +71,7 @@ nav ul li a:hover {
 
 /*<!--------------------------------section first------------------------------>*/
 .container {
+  /*  width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -78,8 +79,16 @@ nav ul li a:hover {
     height: 400px;
     background-color: #87509c;
     flex-direction: column;
+    padding-top: 1vh;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw; 
+    background-color: #87509c;
+    padding-top: 50px;
     padding-top: 1vh;
-    width: 1440px;
 }
 
 .first {
@@ -89,13 +98,13 @@ nav ul li a:hover {
 }
 
 #first.section {
-    width: 1452px;
-    margin-bottom: 100px;
+    width: 100%;
+    min-height: 350px; 
     max-width: 1440px;
-    min-height: 250px; 
     background-color: #87509c;
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -104,8 +113,7 @@ nav ul li a:hover {
 }
 
 .first-content {
-    max-width: 450px;
-    width: 100%;
+    max-width: 1152px;
 }
 
 h1 {
@@ -118,7 +126,6 @@ h1 {
     text-align: center;
     margin-top: 100px;
     color: white;
-
     margin-bottom: 20px;
 }
 
