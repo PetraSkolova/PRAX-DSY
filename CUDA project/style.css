@@ -184,6 +184,7 @@ nav ul li a:hover {
 
 .card h4 {
     margin: 10px 0; 
+    color: white;
 }
 
 .card p {
@@ -214,8 +215,12 @@ nav ul li a:hover {
     font-size: 15px;
 }
 
-.second-container p , h1{
-    color: black;
+.third-container  h1, h4{
+    color: #3c4761;
+}
+
+.third-container h5 {
+    color: #30bae7;
 }
 
 .third-container {
@@ -228,4 +233,12 @@ nav ul li a:hover {
     padding-top: 50px;
     padding-top: 1vh;
     width: 100%;
+}
+
+.third-container p , h4, h5{
+    color: black;
+}
+
+.section-third {
+    
 }
