@@ -301,7 +301,7 @@ h5 {
     margin: 11px auto;
 }
 
-.section-title-third {
+.section-title-fourth {
     font-size: 20px;
     display: inline-block;
     position: relative;
@@ -359,7 +359,7 @@ h5 {
     width: 220px;
     height: 220px;
     position: relative;
-    margin-bottom: 10px; /* Medzera medzi kruhom a textom */
+    margin-bottom: 10px; 
 }
 
 .progress-ring svg {
@@ -396,6 +396,100 @@ h5 {
 .skill-label {
     font-weight: bold;
     font-size: 18px;
-    margin-top: 5px; /* Medzera medzi kruhom a popisom */
+    margin-top: 5px; 
 }
-/*<!--------------------------------section fourth------------------------------> */      
+/*<!--------------------------------section fifth------------------------------> */  
+.fifth-container h1 {
+    color: #374442;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.section-text-fifth p {
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 100px;
+    text-align: center;
+    padding: 5px;
+    width: 1440px;
+    justify-content: center;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.underline-fifth {
+    width: 50px;
+    height: 5px;
+    background-color: #e8c483;
+    margin: 11px auto;
+}
+
+.fifth-container {
+    background-color: #FFDD99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin: 0 auto; 
+    text-align: center;
+    padding: 40px 20px;
+
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 0px; 
+    padding: 0px;
+    background: none; 
+}
+
+.filter-btn {
+    background-color: #d9ac63;
+    border: none;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #5a3d1f;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover {
+    opacity: 0.85;
+}
+
+.notebook-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.notebook {
+    max-width: 400px;
+    text-align: center;
+}
+
+.notebook img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.notebook-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #5a3d1f;
+}
