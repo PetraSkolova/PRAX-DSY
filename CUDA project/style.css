@@ -501,3 +501,48 @@ h5 {
     color: #5a3d1f;
 }
 /*<!--------------------------------section six------------------------------> */  
+.underline-six {
+    width: 50px;
+    height: 5px;
+    background-color: #b93d6e;
+    margin: 11px auto;
+}
+
+.six-container {
+    display: flex;
+    background-color: #D74680;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-title-six h1 {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+    width: 1440px;
+}
+
+.section-text-six p {
+    display: inline-block;
+    position: relative;
+    align-items: center;
+    padding: 5px;
+    width: 1440px;
+    justify-content: center;
+    margin-bottom: 30px;
+    font-size: 15px;
+    padding-bottom: 100px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 900px; 
+    margin: 0 auto; /* Centrovanie */
+}
+
+
