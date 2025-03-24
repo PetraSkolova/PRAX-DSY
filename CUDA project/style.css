@@ -735,6 +735,11 @@ button.last:hover {
 .required {
     color: #3c5499;
 }
+
+address {
+    color: white;
+    font-style: normal; 
+}
 /*<!--------------------------------footer------------------------------> */  
 footer {
     background: #344b8e;
