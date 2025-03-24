@@ -519,7 +519,7 @@ h5 {
     transition: 0.3s;
 }
 
-.load-more-btn:hover {
+.load-more-btn-op:hover {
     background-color: #1AA78A; 
 }
 /*<!--------------------------------section six------------------------------> */  
@@ -728,7 +728,7 @@ textarea {
     margin-top: 10px;
 }
 
-button:hover {
+button.last:hover {
     background: #1a7cd8;
 }
 
