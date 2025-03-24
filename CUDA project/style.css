@@ -507,7 +507,7 @@ h5 {
     margin: 60px; 
 }
 
-.load-more-btn {
+.load-more-btn-op {
     background-color: #17c2a4; 
     color: white;
     font-size: 18px;
@@ -520,7 +520,7 @@ h5 {
 }
 
 .load-more-btn:hover {
-    background-color: #1AA78A; /* Tmavší odtieň na hover */
+    background-color: #1AA78A; 
 }
 /*<!--------------------------------section six------------------------------> */  
 .underline-six {
@@ -670,6 +670,7 @@ h5 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .formular {
@@ -714,8 +715,8 @@ textarea {
     resize: none;
     margin-bottom: 15px;
 }
-
-button {
+ 
+.last {
     background: #30bae7;
     color: white;
     border: none;
@@ -733,4 +734,37 @@ button:hover {
 
 .required {
     color: #3c5499;
+}
+/*<!--------------------------------footer------------------------------> */  
+footer {
+    background: #344b8e;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 65px;
+}
+
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    width: 1152px;
+    text-align: center;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.footer-nav a.twitter {
+    color: #30bae7;
+}
+
+.footer-nav a:not(.twitter):hover {
+    color: #30bae7;
 }
