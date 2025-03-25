@@ -49,14 +49,19 @@ nav ul li a {
     font-size: 14px;
     text-transform: uppercase;
     padding: 5px 10px;
+    transition: background 0.3s;
 }
 
 nav ul li a.active,
-nav ul li a:hover {
+nav ul li a:hover,
+section:target ~ header nav ul li a[href*="target"] {
     background: #5C357D; 
     border-radius: 5px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 /*<!--------------------------------section first------------------------------>*/
 .container {
     display: flex;
