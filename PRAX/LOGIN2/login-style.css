@@ -1,3 +1,22 @@
-body {
-    background-color: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+li {
+    background-image: url(background.png);
+    width: 1920px;
+    height: 1080px;
+    background-repeat: no-repeat;
+    list-style-type: none;
+    border-radius: 15px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
