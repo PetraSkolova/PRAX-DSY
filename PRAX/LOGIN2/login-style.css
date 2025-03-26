@@ -4,66 +4,124 @@
     box-sizing: border-box;
 }
 
-li {
-    background-image: url(background.png);
-    width: 1920px;
-    height: 1080px;
-    background-repeat: no-repeat;
-    list-style-type: none;
-    border-radius: 15px;
-}
-
-.container {
+body {
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
     font-family: Arial, sans-serif;
 }
 
 .login-container {
-    background-color: gray;
-    padding: 30px;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 30px;
     text-align: center;
     width: 410px;
+    height: 588px;
     color: white;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.3), 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-h2, h3 {
-    margin: 10px 0;
+h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 20px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
 }
 
 label {
     text-align: left;
+    font-size: 14px;
 }
 
 input {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid #ddd;
+    background: white;
+    color: black;
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+a {
+    text-align: left;
+    font-size: 12px;
+    color: #ADD8E6;
+    text-decoration: none;
 }
 
 button {
     background-color: #0d2f63;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 12px;
 }
 
 .social {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.
+.social button {
+    width: 85px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social button:hover {
+    transform: scale(1.05);
+}
+
+.google img,
+.github img,
+.facebook img {
+    width: 25px;
+    height: 25px;
+}
+
+.register-text {
+    font-size: 10px;
+    font-family: Arial;
+    padding-top: 13px;
+}
+
+.bold-text {
+    font-weight: bold;
+    color: white;
+    font-size: 10px;
+}

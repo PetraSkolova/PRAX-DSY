@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,39 +7,40 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="container">
-        <li></li> 
+    <div class="login-container">
+        <h2>Your logo</h2>
+        <h3>Login</h3>
 
-        <div class="login-container">
-            <h2>Your logo</h2>
-            <h3>Login</h3>
+        <form action="#" method="post">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="username@gmail.com" required>
 
-            <form action="#" method="post">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="user@gmail.com" required>  <!--required, povinne pole-->
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
 
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+            <a href="#">Forgot Password?</a>
 
-                <a href="#">Forgot Password?</a>
+            <button type="submit">Sign in</button>
 
-                <button type="submit">Sign in</button>
+            <p>or continue with</p>
 
-                <p>or continue with</p>
+            <div class="social">
+                <button class="google">
+                    <img src="images/flat-color-icons--google.svg" alt="google">
+                </button>
+                <button class="github">
+                    <img src="images/skill-icons--github-light.svg" alt="github">
+                </button>
+                <button class="facebook">
+                    <img src="images/logos--facebook.svg" alt="facebook">
+                </button>
+            </div>
 
-                <div class="social">
-                    <button class="google">G</button>
-                    <button class="github">GH</button>
-                    <button class="facebook">F</button>
-                </div>
-
-                <p>Don’t have an account yet? <a href="#">Register for free</a></p>
-            </form>
-        </div>
+            <p class="register-text">Don’t have an account yet? <a href="#" class="bold-text">Register for free</a></p>
+        </form>
     </div>
-   
 </body>
 </html>
