@@ -18,5 +18,52 @@ li {
     justify-content: center;
     align-items: center;
     height: 100vh; 
+    font-family: Arial, sans-serif;
 }
 
+.login-container {
+    background-color: gray;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 410px;
+    color: white;
+}
+
+h2, h3 {
+    margin: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0d2f63;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.
