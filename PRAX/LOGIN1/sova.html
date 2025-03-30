@@ -1,0 +1,54 @@
+<!DOCTYPE html5>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sova.css">
+    <title>Owl</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Your logo</h2>
+        <h3>Login</h3>
+
+        <form action="#" method="post">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="username@gmail.com" required>
+
+            <label for="password">Password</label>
+            <div class="password-container">
+                <input type="checkbox" id="toggle-password">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <label for="toggle-password" class="toggle-password"></label>
+            </div>
+            
+            <label for="confirm-password">Confirm Password</label>
+            <div class="password-container">
+                <input type="checkbox" id="toggle-confirm-password">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+                <label for="toggle-confirm-password" class="toggle-password"></label>
+            </div>
+
+            <a href="#">Forgot Password?</a>
+
+            <button type="submit">Sign in</button>
+
+            <p>or continue with</p>
+
+            <div class="social">
+                <button class="google">
+                    <img src="obrazky/flat-color-icons--google.svg" alt="google">
+                </button>
+                <button class="github">
+                    <img src="obrazky/skill-icons--github-light.svg" alt="github">
+                </button>
+                <button class="facebook">
+                    <img src="obrazky/logos--facebook.svg" alt="facebook">
+                </button>
+            </div>
+
+            <p class="register-text">Don’t have an account yet? <a href="#" class="bold-text">Register for free</a></p>
+        </form>
+    </div>
+</body>
+</html>
