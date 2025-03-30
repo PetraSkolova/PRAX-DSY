@@ -13,3 +13,37 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
 }
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+label {
+    text-align: left;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    border: 1px solid #ddd;
+    background: white;
+    color: black;
+}
