@@ -5,47 +5,72 @@
 }
 
 body {
-    background-image: url("obrazky/pozadie.png");
+    background-image: url("obrazky/bg.png");
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     font-family: Arial, sans-serif;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 1440px; 
+    padding: 20px;
+    gap: 80px; 
+    margin-left: 135px;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    width: 420px; 
+    color: white;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.3), 0px 6px 25px rgba(0, 0, 0, 0.3);
+}
+
 h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: lighter;
+    color: #F25019;
+    text-align: left;
 }
 
 h3 {
     text-align: left;
-    margin-bottom: 30px;
-    font-size: 20px;
+    margin-bottom: 20px;
+    font-size: 38px;
+    color: #333333;
+    font-weight: bold;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 10px;
 }
 
 label {
     text-align: left;
     font-size: 14px;
+    color: #333333;
 }
 
 input {
     width: 100%;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 5px;
     font-size: 14px;
-    color: white;
-    border: 1px solid #ddd;
-    background: white;
     color: black;
+    border: 1px solid white;
+    background: white;
 }
 
 input::placeholder {
@@ -53,14 +78,18 @@ input::placeholder {
 }
 
 a {
-    text-align: left;
     font-size: 12px;
-    color: #ADD8E6;
+    color: #AE4700;
     text-decoration: none;
+    text-align: right;
+}
+
+p {
+    color: #333333;
 }
 
 button {
-    background-color: #0d2f63;
+    background-color: #F25019;
     color: white;
     padding: 12px;
     border: none;
@@ -78,10 +107,10 @@ button {
 }
 
 .social button {
-    width: 85px;
+    width: 70px;
     height: 40px;
     border: none;
-    border-radius: 12px;
+    border-radius: 20px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -97,20 +126,19 @@ button {
 .google img,
 .github img,
 .facebook img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 .register-text {
-    font-size: 10px;
+    font-size: 12px;
     font-family: Arial;
-    padding-top: 13px;
+    padding-top: 15px;
 }
 
 .bold-text {
     font-weight: bold;
-    color: white;
-    font-size: 10px;
+    color: #AE4700;
 }
 
 .password-container {
@@ -120,14 +148,13 @@ button {
     width: 100%;
 }
 
-.password-container input[type="password"],
-.password-container input[type="text"] {
+.password-container input {
     flex: 1;
     padding-right: 35px;
 }
 
 .password-container input[type="checkbox"] {
-    display: none; 
+    display: none;
 }
 
 .toggle-password {
@@ -150,14 +177,12 @@ button {
     background-size: contain;
 }
 
-.login-container {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 50px;
-    border-radius: 30px;
-    text-align: center;
-    width: 410px;
-    height: 588px;
-    color: white;
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.3), 0px 4px 20px rgba(0, 0, 0, 0.3);
+.image {
+    background-image: url('obrazky/sovicka.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 550px; 
+    width: 550px; 
+    flex-shrink: 0; 
 }
