@@ -87,25 +87,5 @@ body {
     width: 0;
 }
 
-.container-pc {
-    width: 1440px;
-    display: flex;
-    flex-direction: column;
-}
-
-.container-pc img {
-    width: 300px;
-    height: 300px;
-}
-
-h2 {
-    color: #151A41;
-    margin-bottom: 10px;
-    font-size: bold;
-}
-
-p {
-    font-size: large;
-}
 
 
