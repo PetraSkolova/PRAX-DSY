@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
 }
-  
+
 .main-header {
     display: flex;
     align-items: center;
@@ -87,5 +87,84 @@ body {
     width: 0;
 }
 
+h1 {
+    font-size: 12px;
+    font-weight: 500;
 
+}
 
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+p {
+    font-size: 10px;
+    color: #616070;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    background-color: #34ACDB;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 10px 0px;
+    width: 100%;
+}
+
+.hodnotenie {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cena {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hviezdicky {
+    display: flex;
+    flex-direction: row;
+    gap:5px
+}
+
+.pocitac {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #f3f3f3;
+    padding: 32px 16px 16px;
+    width: 200px;
+    gap:20px;
+}
+
+.pc {
+    width: 160px;
+}
+
+.popis {
+    display: flex;
+    gap:5px;
+    flex-direction: column;
+}
+
+main img{
+    width: 13px;
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap:65px;
+    padding: 50px 100px;
+
+}
