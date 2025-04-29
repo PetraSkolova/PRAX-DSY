@@ -175,9 +175,9 @@ main {
   
   .grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 stĺpce */
-    grid-auto-rows: auto; /* automatická výška riadkov */
-    gap: 40px;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-auto-rows: auto;
+    gap: 20px; 
     justify-items: center;
     max-width: 1200px;
     width: 100%;
