@@ -144,6 +144,11 @@ button {
     padding: 32px 16px 16px;
     width: 200px;
     gap:20px;
+    padding: 20px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 8px;
 }
 
 .pc {
@@ -160,12 +165,20 @@ main img{
     width: 13px;
 }
 
-main{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap:65px;
+main {
+    display: flex;
+    justify-content: center;
     padding: 50px;
-    margin-left: 200px;
-    width: 1440px;
-}
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 stĺpce */
+    grid-auto-rows: auto; /* automatická výška riadkov */
+    gap: 40px;
+    justify-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
