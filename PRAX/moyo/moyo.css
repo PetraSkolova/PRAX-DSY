@@ -90,7 +90,8 @@ body {
 h1 {
     font-size: 12px;
     font-weight: 500;
-
+    color: #1a1a33;
+    font-weight: bold;
 }
 
 h2 {
