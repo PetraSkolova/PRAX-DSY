@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Meno
     if (empty(trim($_POST["userName"]))) {
-        $nameErr = "Meno je povinné.";
+        $nameErr = "*Meno je povinné.";
         $isValid = false;
     } else {
         $name = htmlspecialchars(trim($_POST["userName"]));
@@ -16,10 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Email
     if (empty(trim($_POST["mail"]))) {
-        $emailErr = "Email je povinný.";
+        $emailErr = "*Email je povinný.";
         $isValid = false;
     } elseif (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Neplatný formát e-mailu.";
+        $emailErr = "*Neplatný formát e-mailu.";
         $isValid = false;
     } else {
         $email = htmlspecialchars(trim($_POST["mail"]));
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Predmet
     if (empty(trim($_POST["subject"]))) {
-        $subjectErr = "Predmet je povinný.";
+        $subjectErr = "*Predmet je povinný.";
         $isValid = false;
     } else {
         $subject = htmlspecialchars(trim($_POST["subject"]));
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Správa
     if (empty(trim($_POST["message"]))) {
-        $messageErr = "Správa je povinná.";
+        $messageErr = "*Správa je povinná.";
         $isValid = false;
     } else {
         $message = htmlspecialchars(trim($_POST["message"]));
@@ -53,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
+    <link rel="stylesheet" href="homework.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
     <div id="container">
@@ -64,27 +64,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="success"><?= $success ?></p>
         <?php endif; ?>
 
-        <form method="post" action="form.php">
+        <form method="post" action="#">
             <div id="data">
                 <div id="name">
                     <label for="userName">Name:</label><br>
                     <input type="text" id="userName" name="userName" class="inputs <?= $nameErr ? 'input-error' : '' ?>" placeholder="Enter Name" value="<?= $name ?>">
-                    <div class="error"><?= $nameErr ?></div>
+                    <div class="error"><div style="color: red; font-size: 12px; gap: 15px"><?= $nameErr ?></div></div>
                 </div>
                 <div id="email">
                     <label for="mail">Email:</label><br>
                     <input type="email" id="mail" name="mail" class="inputs <?= $emailErr ? 'input-error' : '' ?>" placeholder="Enter email" value="<?= $email ?>">
-                    <div class="error"><?= $emailErr ?></div>
+                    <div class="error"><div style="color: red; font-size: 12px; gap: 15px"><?= $emailErr ?></div></div>
                 </div>
                 <div id="title">
                     <label for="subject">Subject:</label><br>
                     <input type="text" id="subject" name="subject" class="inputs <?= $subjectErr ? 'input-error' : '' ?>" placeholder="Enter subject" value="<?= $subject ?>">
-                    <div class="error"><?= $subjectErr ?></div>
+                    <div class="error"><div style="color: red; font-size: 12px;"><?= $subjectErr ?></div></div>
                 </div>
                 <div id="text">
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" class="inputs <?= $messageErr ? 'input-error' : '' ?>" placeholder="Enter message" rows="7"><?= $message ?></textarea>
-                    <div class="error"><?= $messageErr ?></div>
+                    <div class="error"><div style="color: red; font-size: 12px;"><?= $messageErr ?></div></div>
                 </div>
             </div>
 
