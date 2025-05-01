@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  a {
+    font-family: Arial;
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: darkblue;
+  }
+  
+  header {
+    background-color: darkblue;
+    background-size: cover;
+    background-position: center;
+    padding: 40px 60px;
+    width: 100%;
+    color: white;
+    height: 150px;
+  }
+  
+  .container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  .nav-left,
+  .nav-right,
+  .logo-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 100px;
+  }
+  
+  nav ul li a {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 3px solid transparent;
+  }
+  
+  nav ul li a:hover {
+    border-radius: 5px;
+    border: 3px solid white;
+  }
+
+  .gallery-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 16px;
+  }
+  
+  .main-container {
+    display: grid;
+    gap: 20px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 1320px;
+    grid-template-columns: repeat(1, 1fr); /* default: mobil */
+  }
+  
+  .main-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* Tablet (720px) */
+  @media (min-width: 720px) {
+    .main-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Desktop (960px) */
+  @media (min-width: 960px) {
+    .main-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Medium Desktop (1140px) */
+  @media (min-width: 1140px) {
+    .main-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  /* Larger Desktop (1320px) */
+  @media (min-width: 1320px) {
+    .main-container {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
