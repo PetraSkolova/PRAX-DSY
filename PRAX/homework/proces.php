@@ -1,10 +1,8 @@
 <?php
-// Inicializácia premenných
 $name = $email = $subject = $message = "";
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
 $success = "";
 
-// Spracovanie formulára
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $isValid = true;
 
@@ -45,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($isValid) {
         $success = "Ďakujeme, formulár bol úspešne odoslaný.";
-        // Tu môžeš poslať email alebo uložiť do DB
     }
 }
 ?>
