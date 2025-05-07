@@ -8,52 +8,55 @@
     <title>bond-formular</title>
 </head>
 <body>
-    <div class="left">
+    <div class="container">
+        <div class="left">
 
-        <img src="logo spsit.png">
-
-        <div class="text">
-            <h1>Welcome to SPŠIT.</h1>
-            <p>Are you ready to join the elite?</p>
+            <img src="logo spsit.png">
+    
+            <div class="text">
+                <h1>Welcome to SPŠIT.</h1>
+                <p>Are you ready to join the elite?</p>
+            </div>
+            
+            <div class="icons">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                <i class="fa fa-behance" aria-hidden="true"></i>
+                <i class="fa fa-github" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </div>
         </div>
-        
-        <div class="icons">
-            <i class="fa fa-globe" aria-hidden="true"></i>
-            <i class="fa fa-behance" aria-hidden="true"></i>
-            <i class="fa fa-github" aria-hidden="true"></i>
-            <i class="fa fa-twitter" aria-hidden="true"></i>
+    
+        <div class="right">
+            <form>
+                <div id="name">
+                    <label for="userName">USERNAME</label><br>
+                    <input type="text" id="userName" name="userName" class="inputs" placeholder="james.bond">
+                </div><br>
+    
+                <div class="email">
+                    <label for="email">EMAIL</label><br>
+                    <input type="email" id="email" name="email" class="inputs" placeholder="james.bond@spectre.com">
+                </div><br>
+    
+                <div class="password">
+                    <label for="password">PASSWORD</label><br>
+                    <input type="password" id="password" name="password" class="inputs" placeholder="********">
+                </div><br>
+    
+                <div class="repeat">
+                    <label for="repeat">REPEAT PASSWORD</label><br>
+                    <input type="password" id="repeat" name="repeat" class="inputs" placeholder="********">
+                </div><br>
+    
+                <button type="submit">
+                    <h4>REGISTER</h4>
+                </button>
+    
+                <p>I am already a member</p>
+    
+            </form>
         </div>
     </div>
-
-    <div class="right">
-        <form>
-            <div id="name">
-                <label for="userName">USERNAME</label><br>
-                <input type="text" id="userName" name="userName" class="inputs" placeholder="james.bond">
-            </div><br>
-
-            <div class="email">
-                <label for="email">EMAIL</label><br>
-                <input type="email" id="email" name="email" class="inputs" placeholder="james.bond@spectre.com">
-            </div><br>
-
-            <div class="password">
-                <label for="password">PASSWORD</label><br>
-                <input type="password" id="password" name="password" class="inputs" placeholder="********">
-            </div><br>
-
-            <div class="repeat">
-                <label for="repeat">REPEAT PASSWORD</label><br>
-                <input type="password" id="repeat" name="repeat" class="inputs" placeholder="********">
-            </div><br>
-
-            <button type="submit">
-                <h4>REGISTER</h4>
-            </button>
-
-            <p>I am already a member</p>
-
-        </form>
-    </div>
+    
 </body>
 </html>
