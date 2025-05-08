@@ -1,62 +1,61 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>bond-formular</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bond Formulár</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body>
     <div class="container">
         <div class="left">
-
-            <img src="logo spsit.png">
-    
+            <img src="images/logo spsit white.png" alt="Logo" class="logo">
             <div class="text">
-                <h1>Welcome to SPŠIT.</h1>
+                <h5>Welcome to SPŠIT.</h5>
                 <p>Are you ready to join the elite?</p>
             </div>
-            
             <div class="icons">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-                <i class="fa fa-behance" aria-hidden="true"></i>
-                <i class="fa fa-github" aria-hidden="true"></i>
-                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-globe"></i>
+                <i class="fa fa-behance"></i>
+                <i class="fa fa-github"></i>
+                <i class="fa fa-twitter"></i>
             </div>
         </div>
-    
+
         <div class="right">
             <form>
-                <div id="name">
-                    <label for="userName">USERNAME</label><br>
-                    <input type="text" id="userName" name="userName" class="inputs" placeholder="james.bond">
-                </div><br>
-    
-                <div class="email">
-                    <label for="email">EMAIL</label><br>
-                    <input type="email" id="email" name="email" class="inputs" placeholder="james.bond@spectre.com">
-                </div><br>
-    
-                <div class="password">
-                    <label for="password">PASSWORD</label><br>
-                    <input type="password" id="password" name="password" class="inputs" placeholder="********">
-                </div><br>
-    
-                <div class="repeat">
-                    <label for="repeat">REPEAT PASSWORD</label><br>
-                    <input type="password" id="repeat" name="repeat" class="inputs" placeholder="********">
-                </div><br>
-    
-                <button type="submit">
-                    <h4>REGISTER</h4>
-                </button>
-    
-                <p>I am already a member</p>
-    
+                <div>
+                    <label for="userName">USERNAME</label>
+                    <input type="text" id="userName" name="userName" class="inputs" placeholder="james.bond" required/>
+                </div>
+                <div>
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" name="email" class="inputs" placeholder="james.bond@spectre.com" required/>
+                </div>
+                <div>
+                    <label for="password">PASSWORD</label>
+                    <input type="password" id="password" name="password" class="inputs" placeholder="********" required/>
+                </div>
+                <div>
+                    <label for="repeat">REPEAT PASSWORD</label>
+                    <input type="password" id="repeat" name="repeat" class="inputs" placeholder="********" required/>
+                </div>
+
+                <div class="gender-group">
+                    <label>gender</label>
+                    <div class="gender-options">
+                      <label><input type="radio" name="gender" value="male" required> Male</label>
+                      <label><input type="radio" name="gender" value="female" required>Female</label>
+                    </div>
+                  </div>
+
+                <div class="form-footer">
+                    <button type="submit">REGISTER</button>
+                    <a href="#">I am already a member</a>
+                </div>
             </form>
         </div>
     </div>
-    
 </body>
 </html>

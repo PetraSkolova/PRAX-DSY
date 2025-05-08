@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 900px;
+    height: 540px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.left {
+    position: relative;
+    background-image: url("images/pozadie.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    color: white;
+}
+
+.left img:first-child {
+    width: 100px;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.left .text {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left .text  h5 {
+    font-size: 35px;
+    font-weight: 400;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left .text p {
+    font-size: 25px;
+    font-weight: 300;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.left .icons  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.left .icons i {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.left .icons i:hover {
+    transform: scale(1.2);
+}
+
+.right {
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+}
+
+form > div {
+    margin-bottom: 22px;
+}
+
+label {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.inputs {
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    background: transparent;
+    transition: all 0.3s ease;
+    font-family: monospace;
+    color: #222;
+}
+
+.inputs::placeholder {
+    color: #bbb;
+    font-family: monospace;
+}
+
+.inputs:hover {
+    background-color: #f1f1f1;
+}
+
+.inputs:focus {
+    border-bottom: 2px solid #000;
+    background-color: white;
+    outline: none;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px; 
+}
+
+button[type="submit"] {
+    padding: 10px 60px;  
+    background-color: #222;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #000;
+    transform: scale(1.02);
+}
+
+.gender-group {
+    margin-bottom: 20px;
+}
+
+.gender-group label {
+    font-size: 12px;
+    color: #aaa;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.gender-options {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.gender-options input[type="radio"] {
+    margin-right: 6px;
+}
+
+.form-footer a {
+    font-size: 14px;
+    color: #666;
+    text-decoration: underline;
+    transition: color 0.3s ease bold;
+}
+
+.form-footer a:hover {
+    color: #333;
+}
