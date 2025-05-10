@@ -52,11 +52,11 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
         }
     } else {
         echo "<h2>Niektoré povinné polia chýbajú.</h2>";
-        echo '<p><a href="form.html">Späť na formulár</a></p>';
+        echo '<p><a href="index.html">Späť na formulár</a></p>';
     }
 
 } else {
     echo "<h2>Formulár nebol odoslaný cez POST metódu.</h2>";
-    echo '<p><a href="form.html">Späť na formulár</a></p>';
+    echo '<p><a href="index.html">Späť na formulár</a></p>';
 }
 ?>
