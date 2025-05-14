@@ -42,8 +42,11 @@ ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
-    width: 1152px;
+    padding: 10px 0;
+    width: 100%;
+    align-items: center;
 }
 
 ul li a {
@@ -51,7 +54,32 @@ ul li a {
     color: white;
     font-size: 14px;
     padding: 5px 10px;
+    text-align: center;
+    transition: all 0.3s ease;
 }
+
+ul li a:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 13px;
+    padding: 5px 10px;
+}
+
+ul li a.no-hover {
+    padding: 5px 10px;         
+    border: none;               
+    cursor: default;  
+}
+
+ul li a.no-hover:hover {
+    border: none;
+    cursor: default;
+    background: none;
+    border-radius: 0;
+    padding: 5px 10px;          
+    transition: none;           
+}
+
 
 header{
     display: flex;
