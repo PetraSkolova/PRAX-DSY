@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    font-family: Arial;
+    font-weight: normal;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.main-container {
+    background-image: url(pictures/pozadie\ header.png);
+    width: 100%;
+    height: 667px;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 1152px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1440px;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
