@@ -5,9 +5,8 @@ $actualPage = str_replace(".php", "", $actualPage);
 include ("includes/header.php"); 
 
 ?>
-
 <main>
-    <h1>Service</h1>
+    <h1>Login</h1>
 
     <p class="content">
         Lorem ipsum dolor sit amet consectetur

@@ -1,7 +1,7 @@
 <?php 
 
 $actualPage = basename($_SERVER["REQUEST_URI"]);  //odtrhnem lomitko, ostane meno adresara 
-
+$actualPage = str_replace(".php", "", $actualPage);
 include ("includes/header.php"); 
 
 ?>
