@@ -212,7 +212,7 @@ h2 {
 article[class^="card-"] {
     background-color: #b0b0b0;
     border-radius: 15px;
-    padding: 80px 20px 20px 20px; /* viac miesta hore pre zarovnanie */
+    padding: 80px 20px 20px 20px; 
     width: 220px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -220,10 +220,9 @@ article[class^="card-"] {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 400px; /* zabezpečí rovnakú výšku */
+    min-height: 400px; 
 }
 
-/* Elipsovitá fotka nad kartou */
 article[class^="card-"] img {
     width: 120px;
     height: 90px;
@@ -231,14 +230,13 @@ article[class^="card-"] img {
     object-fit: cover;
     border: 4px solid white;
     position: absolute;
-    top: 20px; /* presne usadená vyššie */
+    top: 20px; 
     left: 50%;
     transform: translateX(-50%);
     background-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Textový blok v karte */
 .treneri {
     margin-top: auto;
     font-size: 0.9em;
@@ -246,7 +244,6 @@ article[class^="card-"] img {
     line-height: 1.4;
 }
 
-/* Nadpisy a role */
 .treneri h1 {
     margin-top: 15px;
     font-size: 1.1em;
@@ -319,12 +316,12 @@ article[class^="card-"] img {
     border-radius: 8px;
 }
 
-/* Tablet - zostáva rovnaké ako desktop */
+
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* Žiadne zmeny, layout ostáva rovnaký */
+    
 }
 
-/* Mobilné zariadenia */
+
 @media (max-width: 768px) {
     .galeria h1 {
         font-size: 48px;
@@ -341,12 +338,12 @@ article[class^="card-"] img {
     
     .horizontal,
     .vertical {
-        height: auto; /* Zachová pôvodný tvar */
-        object-fit: contain; /* Bez orezávania */
+        height: auto; 
+        object-fit: contain; 
     }
 }
 
-/* Extra malé mobily */
+
 @media (max-width: 480px) {
     .galeria h1 {
         font-size: 36px;
@@ -358,3 +355,97 @@ article[class^="card-"] img {
 }
 
 /*<!--------------------------------kontakty------------------------------>*/
+
+footer {
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px 0;
+}
+
+.kontakty {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: row;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.border {
+    width: 1152px;
+    padding: 30px 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    position: relative;
+    height: 627px;
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative; 
+    flex: 1;
+    align-items: center;
+}
+
+.socials::before,
+.socials::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 65%;
+    background-color: white;
+    border-radius: 6px;
+    top: -10%;
+}
+
+.socials::before {
+    left: 30px; 
+    top: 200px;
+}
+
+.socials::after {
+    right: 120px; 
+    top: -60px;
+}
+
+.kontakt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+}
+
+.kontakt img {
+    width: 36px;
+    height: 36px;
+}
+
+.kontakt p,
+.kontakt a {
+    margin: 0;
+    color: white;
+    text-decoration: none;
+    font-size: 36px;
+}
+
+.kontakt a:hover {
+    text-decoration: underline;
+}
+
+.napis-kontakty {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    letter-spacing: 10px;
+    font-size: 20px;
+    margin: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 40px;
+}
