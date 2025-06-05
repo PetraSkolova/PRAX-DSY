@@ -11,7 +11,7 @@
     <main>
     <h1>Home page</h1>
     <br>
-    <a href="all_users.php">Users</a>
+    <a href="user_view.php">Users</a>
 
     </main>
 
