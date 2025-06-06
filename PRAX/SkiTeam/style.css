@@ -72,6 +72,7 @@ ul li a {
     text-align: center;
     transition: all 0.3s ease;
     font-family: Roboto bold;
+    border: 2px solid transparent;
 }
 
 ul li a:hover {
