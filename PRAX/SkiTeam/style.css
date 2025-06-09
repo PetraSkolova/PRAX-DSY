@@ -62,12 +62,13 @@ ul {
     padding: 10px 0;
     width: 100%;
     align-items: center;
+    width: 1152px;
 }
 
 ul li a {
     text-decoration: none;
     color: white;
-    font-size: 14px;
+    font-size: 25px;
     padding: 5px 10px;
     text-align: center;
     transition: all 0.3s ease;
@@ -86,6 +87,7 @@ ul li a.no-hover {
     padding: 5px 10px;         
     border: none;               
     cursor: default;  
+    font-size: 25px;
 }
 
 ul li a.no-hover:hover {
@@ -465,6 +467,7 @@ footer {
     justify-content: center;
     flex: 1;
     position: relative;
+    padding-right: 40px;
 }
 
 .socials::before,
@@ -478,7 +481,7 @@ footer {
 }
 
 .socials::before {
-    left: 30px;
+    left: -50px;
     top: 200px;
 }
 
@@ -519,7 +522,7 @@ footer {
     margin: 0;
     color: white;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     height: 100%;
 }
@@ -528,7 +531,8 @@ footer {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
+    gap: 35px;
+    margin-bottom: 36px;
 }
 
 .kontakt img {
@@ -548,4 +552,7 @@ footer {
 
 .kontakt a:hover {
     text-decoration: underline;
+}
+.inside {
+    width: fit-content;
 }
