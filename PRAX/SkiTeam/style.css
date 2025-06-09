@@ -267,6 +267,7 @@ article[class^="card-"] {
     flex-direction: column;
     justify-content: flex-start;
     height: 452px;
+    width: 355px;
     transition: transform 0.3s ease;
     z-index: 1;
     overflow: visible; 
@@ -294,27 +295,33 @@ article[class^="card-"] img {
     font-size: 0.95em;
     color: #ddd;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .treneri p {
     font-style: italic;
-    font-size: 0.9em;
-    color: #ccc;
-    margin-bottom: 20px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    white-space: pre-line; 
+    margin-bottom: 10px;
 }
 
 .treneri h1 {
-    margin: 10px 0 5px;
-    font-size: 1.3em;
+    margin: 0 0 10px;
+    font-size: 40px;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 .treneri h4 {
     margin: 0;
     font-weight: bold;
-    font-size: 1em;
-    color: #ddd;
+    font-size: 32px;
+    color: black;
 }
 
 /*<!--------------------------------podujatia------------------------------>*/
