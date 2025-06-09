@@ -11,7 +11,8 @@ html {
 
 main {
     width: 100%;
-    background-image: linear-gradient(#A0968F, #362D3A), linear-gradient(#362D3A, #313541);
+    min-height: 100vh;
+    background: linear-gradient(to bottom,#a4968f 0%,#5a5255 25%,#2f3342 55%,#382c3f 75%,#8d837c 100%);
 }
 
 /*<!--------------------------------header/domov------------------------------>*/
@@ -187,9 +188,10 @@ h2 {
 /*<!--------------------------------nasi treneri------------------------------>*/
 
 .nasi.treneri {
-    background-color: #2f2f2f;
+    width: 1440px;
+    margin: 0 auto;
     padding: 40px 20px;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
     color: white;
 }
 
@@ -206,63 +208,105 @@ h2 {
 }
 
 .view {
+    width: 1300px;
+    margin: 0 auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding: 40px 0 20px; 
+    position: relative;
+
+    mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,0.4) 5%, 
+        rgba(0,0,0,1) 10%, 
+        rgba(0,0,0,1) 90%, 
+        rgba(0,0,0,0.4) 95%, 
+        rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to right, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,0.4) 5%, 
+        rgba(0,0,0,1) 10%, 
+        rgba(0,0,0,1) 90%, 
+        rgba(0,0,0,0.4) 95%, 
+        rgba(0,0,0,0) 100%);
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.view::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-wrapper {
+    width: calc((355px + 20px) * 7 - 20px);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
 }
 
 article[class^="card-"] {
-    background-color: #b0b0b0;
-    border-radius: 15px;
-    padding: 80px 20px 20px 20px; 
-    width: 220px;
+    flex: 0 0 355px;
+    scroll-snap-align: start;
+    background: #7c7c7c;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px; /*s tymto sa pohrat*/
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 400px; 
+    min-height: 420px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+article[class^="card-"]:hover {
+    transform: translateY(-6px);
+    z-index: 10;
 }
 
 article[class^="card-"] img {
-    width: 120px;
-    height: 90px;
-    border-radius: 50% / 40%;
+    width: 173px;
+    height: 173px;
+    border-radius: 50%;
     object-fit: cover;
-    border: 4px solid white;
-    position: absolute;
-    top: 20px; 
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin: 0 auto 20px;
+    display: block;
 }
 
 .treneri {
     margin-top: auto;
-    font-size: 0.9em;
-    color: #333;
-    line-height: 1.4;
-}
-
-.treneri h1 {
-    margin-top: 15px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: black;
-}
-
-.treneri h4 {
-    margin: 5px 0 0;
-    font-weight: normal;
-    color: #333;
+    font-size: 0.95em;
+    color: #ddd;
+    line-height: 1.6;
 }
 
 .treneri p {
-    margin: 10px 0;
-    color: #333;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.treneri h1 {
+    margin: 10px 0 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: white;
+}
+
+.treneri h4 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1em;
+    color: #ddd;
 }
 
 /*<!--------------------------------podujatia------------------------------>*/
