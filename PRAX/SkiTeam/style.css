@@ -348,11 +348,11 @@ article[class^="card-"] img {
     width: 1440px;
     margin: 0 auto;  color: white;
     font-family: Arial, sans-serif;
-    padding: 50px 0;
+    padding:  40px;
     display: flex;
     flex-direction: row;
     gap: 60px;
-    align-items: center; 
+    align-items: stretch; 
     position: relative;
 }
 
@@ -374,26 +374,15 @@ article[class^="card-"] img {
     display: flex;
     flex-direction: column;
     gap: 60px;
-}
-
-.texty {
-    display: flex;
-    flex-direction: column;
-    gap: 60px; 
-    align-items: center;
-    justify-content: center;
-    flex: 1;
     position: relative;
-    padding: 60px 60px; 
-    height: auto; /
 }
 
 .text {
-    font-size: 24px;
     line-height: 1.8;
     text-align: justify;
     max-width: 1000px; 
     width: 100%;
+    margin: 0 auto;
 }
 
 .horny.text p {
@@ -436,13 +425,13 @@ article[class^="card-"] img {
 .texty {
     display: flex;
     flex-direction: column;
+    align-items: stretch; 
+    justify-content: space-evenly; 
     gap: 36px;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
     position: relative;
-    padding-right: 40px;
-    height: 1440px; /* ← pridané */
+    flex: 1;
+    height: 1647px;
+    padding: 0 40px;
 }
 
 .texty::before,
@@ -450,18 +439,18 @@ article[class^="card-"] img {
     content: "";
     position: absolute;
     width: 6px;
-    height: 400px;
+    height: 349px;
     background-color: white;
     border-radius: 6px;
 }
 
 .texty::before {
-    left: 0px;
+    left: 0;
     top: -30px;
 }
 
 .texty::after {
-    right: 0px;
+    right: 0;
     bottom: -30px;
 }
 
