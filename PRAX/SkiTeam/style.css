@@ -386,8 +386,13 @@ article[class^="card-"] img {
     text-align: justify; 
 }
 
-.text p {
-    margin: 0;
+.horny.text p {
+    color: red;
+    display: flex;
+}
+
+.spodny.text p {
+    color: blue;
 }
 
 .obrazky {
