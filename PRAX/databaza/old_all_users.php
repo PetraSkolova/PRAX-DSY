@@ -1,21 +1,8 @@
 <?php
-//udaje o nasej databaze
-$db_host = "localhost";
-$db_user = "admin";
-$db_password = "admin1234";
-$db_name = "db_user";
-//toto nas nasu databazu pripoji - takze k nej referujeme ked ju chceme pouzit a robit s nou
-$conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+require "database.php";
 
-//toto zistuje ze ci bol nejaky error ked sme sa snazili pripojit
-if(mysqli_connect_error())
-{
-    echo mysqli_connect_error();
-    exit;
-}
-//ukaze sa ak error nebol
-echo "Database is connected";
-
+//require-cel stranka padne ak je v tom tubore chyba
+//include - nacita sa to c je dobre aj ked je subor zly (napr index.php ale toto by neslo)
 //tento prikaz chceme poslat na databazu
 $sql = "SELECT * FROM users";
 //toto posle nasu poziadavku a zapiseme si to co nam prislo spat
@@ -56,8 +43,8 @@ $all_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <ul>
             <?php foreach($all_users as $oneUser): ?>
                 <li><?php echo $oneUser["first_name"]." ".$oneUser["last_name"];?></li>
-
-                <?php endforeach;?>
+                <a href="one_user.php?id=<?php echo $oneUser["id"]?>">Mode information...</a><br><br>
+            <?php endforeach;?>
             </ul>
             <?php endif;?>
 
