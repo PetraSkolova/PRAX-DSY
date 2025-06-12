@@ -17,6 +17,10 @@ main {
     background: linear-gradient(to bottom,#a4968f 0%,#5a5255 25%,#2f3342 55%,#382c3f 75%,#8d837c 100%);
 }
 
+main > section:not(:first-of-type) {
+  margin-top: 87px;
+}
+
 /*<!--------------------------------header/domov------------------------------>*/
 
 a {
@@ -53,7 +57,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: 40px;
+    position: relative;
 }
 
 ul {
@@ -359,7 +364,7 @@ article[class^="card-"] img {
 .podujatia h1 {
     writing-mode: vertical-lr;
     text-orientation: upright;
-    font-size: 140px;
+    font-size: 128px;
     letter-spacing: 30px;
     margin: 0;
     color: white;
@@ -423,15 +428,12 @@ article[class^="card-"] img {
 }
 
 .texty {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; 
-    justify-content: space-evenly; 
-    gap: 36px;
     position: relative;
     flex: 1;
     height: 1647px;
-    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .texty::before,
@@ -452,6 +454,14 @@ article[class^="card-"] img {
 .texty::after {
     right: 0;
     bottom: -30px;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 230px; 
+    padding: 0 40px;
+    max-width: 900px; 
 }
 
 /*<!--------------------------------galeria------------------------------>*/
