@@ -44,6 +44,7 @@ body {
     height: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .wrapper {
@@ -124,6 +125,40 @@ header{
     font-weight: bold;
     font-size: 1.6rem;
     font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .wrapper {
+        max-width: 920px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    ul {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    ul li a {
+        font-size: 20px;
+        padding: 6px 12px;
+    }
+
+    .special-quote {
+        font-size: 1.4rem;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .logo {
+        width: 80px;
+    }
+
+    .container-header {
+        padding-top: 30px;
+    }
 }
 
 /*<!--------------------------------o nas------------------------------>*/
@@ -214,6 +249,65 @@ header{
     margin-left: 65px;
     width: 559px;
     font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+@media (max-width: 1200px) {
+    .o-nas {
+        max-width: 920px;
+        padding: 48px 24px;
+        gap: 100px;
+    }
+
+    .content {
+        max-width: 920px;
+        gap: 60px;
+        height: 400px;
+    }
+
+    .picture img {
+        width: 280px;
+        height: auto;
+    }
+
+    .txt {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .span-container {
+        top: -40px;
+        gap: 8px;
+    }
+
+    .cislo img {
+        width: 80px;
+        height: auto;
+    }
+
+    .sipka img {
+        width: 120px;
+        height: auto;
+        margin-left: -100px;
+        margin-top: 0;
+    }
+
+    .txt-1 {
+        font-size: 20px;
+    }
+
+    .txt-2 {
+        font-size: 48px;
+        margin-left: 40px;
+        margin-top: -20px;
+        padding-bottom: 20px;
+    }
+
+    .o-nas p {
+        font-size: 16px;
+        margin-top: 100px;
+        margin-left: 40px;
+        width: 480px;
+    }
 }
 
 /*<!--------------------------------nasi treneri------------------------------>*/
@@ -371,6 +465,55 @@ article[class^="card-"] img {
     color: black;
 }
 
+@media (max-width: 1200px) {
+    .nasi-treneri {
+        width: 920px;
+        padding: 40px 20px;
+    }
+
+    .view {
+        width: 920px;
+        height: 620px;
+        gap: 20px;
+        padding: 40px 0 20px;
+    }
+
+    .slider-wrapper {
+        width: calc((355px + 20px) * 3); 
+    }
+
+    article[class^="card-"] {
+        flex: 0 0 355px;
+        height: 450px;
+    }
+
+    article[class^="card-"] img {
+        width: 180px;
+        height: 180px;
+        top: -90px;
+    }
+
+    .nadpis-2 h1 {
+        font-size: 60px;
+    }
+
+    .nadpis-2 p {
+        font-size: 24px;
+    }
+
+    .treneri h1 {
+        font-size: 32px;
+    }
+
+    .treneri h4 {
+        font-size: 26px;
+    }
+
+    .treneri p {
+        font-size: 14px;
+    }
+}
+
 /*<!--------------------------------podujatia------------------------------>*/
 
 .podujatia {
@@ -488,6 +631,68 @@ article[class^="card-"] img {
     max-width: 900px; 
 }
 
+@media (max-width: 1200px) {
+    .podujatia {
+        width: 920px;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .podujatia h1 {
+        font-size: 88px;
+        letter-spacing: 20px;
+    }
+
+    .container {
+        width: 100%;
+        gap: 40px;
+    }
+
+    .text {
+        max-width: 860px;
+    }
+
+    .horny.text p,
+    .spodny.text p {
+        font-size: 20px;
+    }
+
+    .obrazky {
+        width: 700px;
+        height: 500px;
+    }
+
+    .obrazky img:first-child {
+        width: 400px;
+        height: 330px;
+        left: -30px;
+    }
+
+    .obrazky img:last-child {
+        width: 400px;
+        height: 330px;
+        top: 180px;
+        left: 260px;
+    }
+
+    .texty {
+        height: auto;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .texty::before,
+    .texty::after {
+        height: 260px;
+    }
+
+    .text-wrapper {
+        padding: 0 20px;
+        gap: 160px;
+        max-width: 840px;
+    }
+}
+
 /*<!--------------------------------galeria------------------------------>*/
 
 .galeria {
@@ -540,41 +745,51 @@ article[class^="card-"] img {
     border-radius: 8px;
 }
 
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    
-}
-
-
-@media (max-width: 768px) {
-    .galeria h1 {
-        font-size: 48px;
-        margin-bottom: 60px;
-        padding-top: 20px;
-    }
-    
-    .row-horizontal,
-    .row-vertical {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .horizontal,
-    .vertical {
-        height: auto; 
-        object-fit: contain; 
-    }
-}
-
-
-@media (max-width: 480px) {
-    .galeria h1 {
-        font-size: 36px;
-    }
-    
+@media (max-width: 1200px) {
     .galeria {
-        padding: 20px 15px;
+        padding: 40px 20px;
+        max-width: 920px;
+        margin: 0 auto;
+    }
+
+    .galeria h1 {
+        font-size: 64px;
+        margin-bottom: 40px;
+    }
+
+    .gallery-container {
+        max-width: 920px;
+        margin: 0 auto;
+    }
+
+    .row-horizontal {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        margin-bottom: 28px;
+    }
+
+    .row-vertical {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-bottom: 28px;
+    }
+
+    .horizontal {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        border-radius: 8px;
+        max-width: 100%; 
+    }
+
+    .vertical {
+        width: 100%;
+        aspect-ratio: 9/16;
+        object-fit: cover;
+        border-radius: 8px;
+        max-width: 100%; 
     }
 }
 
@@ -703,4 +918,126 @@ footer {
 }
 .inside {
     width: fit-content;
+}
+
+@media (max-width: 1200px) {
+    footer {
+        padding: 40px 20px;
+    }
+
+    .kontakty {
+        width: 920px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .border {
+        width: 100%;
+        height: 627px;
+        padding: 30px 50px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: 500px; 
+    }
+
+    .socials {
+        flex-direction: column;
+        gap: 30px;
+        padding-right: 40px;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .socials::before,
+    .socials::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 247px;
+        background-color: white;
+        border-radius: 6px;
+    }
+
+    .socials::before {
+        left: -50px;
+        top: 250px;
+    }
+
+    .socials::after {
+        right: 80px;
+        top: -70px;
+    }
+
+    .ikony,
+    .texty {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .ikony img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .texty p,
+    .texty a {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .texty a:hover {
+        text-decoration: underline;
+    }
+
+    .napis-kontakty {
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        letter-spacing: 10px;
+        font-size: 60px;
+        margin: 0;
+        color: white;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .kontakt {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 35px;
+        margin-bottom: 36px;
+    }
+
+    .kontakt img {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+    }
+
+    .kontakt p,
+    .kontakt a {
+        margin: 0;
+        font-size: 28px;
+        color: white;
+        text-decoration: none;
+        line-height: 1.4;
+    }
+
+    .kontakt a:hover {
+        text-decoration: underline;
+    }
+
+    .inside {
+        width: fit-content;
+    }
 }
