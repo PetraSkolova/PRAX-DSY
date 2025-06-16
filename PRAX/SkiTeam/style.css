@@ -518,13 +518,14 @@ article[class^="card-"] img {
 
 .podujatia {
     width: 1440px;
-    margin: 0 auto;  color: white;
+    margin: 0 auto;
+    color: white;
     font-family: Arial, sans-serif;
-    padding:  40px;
+    padding: 40px;
     display: flex;
     flex-direction: row;
     gap: 60px;
-    align-items: stretch; 
+    align-items: stretch;
     position: relative;
 }
 
@@ -552,16 +553,12 @@ article[class^="card-"] img {
 .text {
     line-height: 1.8;
     text-align: justify;
-    max-width: 1000px; 
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
 }
 
-.horny.text p {
-    color: white;
-    font-size: 24px;
-}
-
+.horny.text p,
 .spodny.text p {
     color: white;
     font-size: 24px;
@@ -571,7 +568,7 @@ article[class^="card-"] img {
     position: relative;
     width: 831px;
     height: 602px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .obrazky img:first-child {
@@ -626,10 +623,41 @@ article[class^="card-"] img {
 .text-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 215px; 
+    gap: 215px;
     padding: 0 40px;
-    max-width: 900px; 
+    max-width: 900px;
 }
+
+.toggle-container {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    display: none; /* Šípka je predvolene skrytá pre desktop/tablet */
+}
+
+.toggle-arrow {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-arrow.rotated {
+    transform: rotate(180deg);
+}
+
+.expandable-text {
+    /* Na desktop/tablet (predvolene) nebude max-height obmedzená, text bude celý */
+    overflow: visible;
+    max-height: none; /* Uistite sa, že na desktope je text vždy celý */
+    opacity: 1;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Na desktope a tablete by text nemal mať žiadny gradient */
+.expandable-text::after {
+    display: none;
+}
+
 
 @media (max-width: 1200px) {
     .podujatia {
@@ -691,6 +719,130 @@ article[class^="card-"] img {
         gap: 160px;
         max-width: 840px;
     }
+
+    .toggle-container {
+        display: none; /* Zabezpečí, že šípka je skrytá aj na tabletoch */
+    }
+
+    .expandable-text {
+        max-height: none; /* Na tablete je text vždy celý */
+    }
+}
+
+@media (max-width: 412px) {
+    .podujatia {
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .podujatia h1 {
+        writing-mode: horizontal-tb;
+        font-size: 40px;
+        letter-spacing: normal;
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
+        height: auto;
+    }
+
+    .container {
+        width: 300px;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background-color: #5A5A5A;
+        gap: 20px;
+    }
+
+    .texty {
+        height: auto;
+        padding: 0;
+        display: block;
+    }
+
+    .texty::before,
+    .texty::after {
+        display: none;
+    }
+
+    .text-wrapper {
+        padding: 0;
+        gap: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .text {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .horny.text p,
+    .spodny.text p {
+        font-size: 16px;
+    }
+
+    .obrazky {
+        position: static;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin: 0;
+    }
+
+    .obrazky img:first-child,
+    .obrazky img:last-child {
+        position: static;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 0;
+    }
+
+    .toggle-container {
+        display: block; /* Zobrazenie šípky len na mobile */
+        margin-top: 10px;
+    }
+
+    /* Štýly pre zbalený text na mobile (skrátenie) */
+    .expandable-text.collapsed {
+        max-height: 100px; /* Nastavte výšku, aby sa zobrazil iba skrátený text */
+        overflow: hidden;
+        position: relative; /* Pre gradient */
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* Gradient pre "fade out" efekt na zbalenom texte */
+    .expandable-text.collapsed::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Výška gradientu */
+        background: linear-gradient(to top, #5A5A5A, rgba(90, 90, 90, 0)); /* Farba pozadia kontajnera */
+        display: block; /* Zobrazí gradient len keď je zbalený */
+    }
+
+    /* Štýly pre zobrazený text na mobile */
+    .expandable-text.expanded {
+        max-height: 500px; /* Dostatočná výška pre zobrazenie celého textu */
+        opacity: 1;
+        margin-bottom: 10px;
+    }
+
+    /* Odstránime gradient, keď je text rozbalený */
+    .expandable-text.expanded::after {
+        display: none;
+    }
 }
 
 /*<!--------------------------------galeria------------------------------>*/
@@ -706,9 +858,9 @@ article[class^="card-"] img {
 .galeria h1 {
     font-size: 80px;
     text-align: center;
-    margin: 0 auto 127px auto; 
-    padding-top: 40px; 
-    max-width: 1152px; 
+    margin: 0 auto 127px auto;
+    padding-top: 40px;
+    max-width: 1152px;
 }
 
 .gallery-container {
@@ -730,17 +882,16 @@ article[class^="card-"] img {
     margin-bottom: 28px;
 }
 
-
 .horizontal {
     width: 100%;
-    aspect-ratio: 16/9;  
+    aspect-ratio: 16/9;
     object-fit: cover;
     border-radius: 8px;
 }
 
 .vertical {
     width: 100%;
-    aspect-ratio: 9/16;  
+    aspect-ratio: 9/16;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -781,7 +932,7 @@ article[class^="card-"] img {
         aspect-ratio: 16/9;
         object-fit: cover;
         border-radius: 8px;
-        max-width: 100%; 
+        max-width: 100%;
     }
 
     .vertical {
@@ -789,7 +940,45 @@ article[class^="card-"] img {
         aspect-ratio: 9/16;
         object-fit: cover;
         border-radius: 8px;
-        max-width: 100%; 
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 412px) {
+    .galeria {
+        padding: 20px 0;
+        width: 100%;
+    }
+
+    .galeria h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .gallery-container {
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px;
+        gap: 15px;
+    }
+
+    .row-horizontal,
+    .row-vertical {
+        display: contents;
+    }
+
+    .horizontal,
+    .vertical {
+        width: 270px;
+        height: 380px;
+        flex-shrink: 0;
+        object-fit: cover;
+        border-radius: 8px;
+        scroll-snap-align: start;
     }
 }
 
@@ -804,98 +993,73 @@ footer {
 .kontakty {
     display: flex;
     justify-content: center;
-    align-items: stretch;
-    flex-direction: row;
+    align-items: center; 
     width: 1440px;
     margin: 0 auto;
 }
 
 .border {
     width: 1152px;
-    height: 627px;
+    height: auto; 
     padding: 30px 50px;
     border-radius: 8px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 40px; 
     position: relative;
-    height: 627px;
+}
+
+.napis-kontakty {
+    font-size: 65px;
+    margin: 0;
+    color: white;
+    text-align: center; 
 }
 
 .socials {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     gap: 36px;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
-    flex: 1;
+    width: 100%; 
     position: relative;
-    padding-right: 65px;
+    padding-left: 0px; 
 }
 
-.socials::before,
-.socials::after {
+.socials::before { 
     content: "";
     position: absolute;
     width: 6px;
-    height: 247px;
     background-color: white;
     border-radius: 6px;
+    left: 40px; 
+    top: 0;
+    height: 100%; 
 }
 
-.socials::before {
-    left: -50px;
-    top: 300px;
-}
-
-.socials::after {
-    right: 120px;
-    top: -70px;
-}
-
-.ikony,
-.texty {
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-}
-
-.ikony img {
-    width: 36px;
-    height: 36px;
-}
-
-.texty p,
-.texty a {
-    margin: 0;
-    font-size: 36px;
-    color: white;
-    text-decoration: none;
-}
-
-.texty a:hover {
-    text-decoration: underline;
-}
-
-.napis-kontakty {
-    writing-mode: vertical-lr;
-    text-orientation: upright;
-    letter-spacing: 10px;
-    font-size: 65px;
-    margin: 0;
-    color: white;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+.socials::after { 
+    content: "";
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    border-radius: 6px;
+    right: 40px;
+    top: 0;
     height: 100%;
+    display: none;
 }
+
 
 .kontakt {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     align-items: center;
     gap: 35px;
-    margin-bottom: 36px;
+    cursor: pointer;
+    padding: 10px 0; 
+    transition: background-color 0.3s ease;
 }
 
 .kontakt img {
@@ -904,23 +1068,25 @@ footer {
     flex-shrink: 0;
 }
 
-.kontakt p,
-.kontakt a {
+.kontakt-info { 
     margin: 0;
     font-size: 36px;
     color: white;
     text-decoration: none;
     line-height: 1.4;
+    display: block; 
 }
 
-.kontakt a:hover {
+.kontakt-info a {
+    color: white;
+    text-decoration: none;
+}
+
+.kontakt-info a:hover {
     text-decoration: underline;
 }
-.inside {
-    width: fit-content;
-}
 
-@media (max-width: 1200px) {
+@media (min-width: 413px) and (max-width: 1200px) {
     footer {
         padding: 40px 20px;
     }
@@ -928,116 +1094,115 @@ footer {
     .kontakty {
         width: 920px;
         margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-direction: row;
-        gap: 40px;
+    }
+
+    .kontakt-info.show p {
+        font-size: 30px;
     }
 
     .border {
         width: 100%;
-        height: 627px;
+        height: auto; 
         padding: 30px 50px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        height: 500px; 
-    }
-
-    .socials {
-        flex-direction: column;
-        gap: 30px;
-        padding-right: 40px;
-        justify-content: center;
-        flex: 1;
-    }
-
-    .socials::before,
-    .socials::after {
-        content: "";
-        position: absolute;
-        width: 6px;
-        height: 247px;
-        background-color: white;
-        border-radius: 6px;
-    }
-
-    .socials::before {
-        left: -50px;
-        top: 250px;
-    }
-
-    .socials::after {
-        right: 80px;
-        top: -70px;
-    }
-
-    .ikony,
-    .texty {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .ikony img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .texty p,
-    .texty a {
-        margin: 0;
-        font-size: 28px;
-    }
-
-    .texty a:hover {
-        text-decoration: underline;
+        gap: 30px; 
     }
 
     .napis-kontakty {
-        writing-mode: vertical-lr;
-        text-orientation: upright;
-        letter-spacing: 10px;
         font-size: 60px;
-        margin: 0;
-        color: white;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        height: 100%;
     }
 
-    .kontakt {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 35px;
-        margin-bottom: 36px;
+    .socials {
+        gap: 30px;
+        padding-left: 80px; 
+        align-items: flex-start; 
+    }
+
+    .socials::before { 
+        left: 30px;
+    }
+    .socials::after {
+        display: none; 
     }
 
     .kontakt img {
         width: 48px;
         height: 48px;
-        flex-shrink: 0;
     }
 
-    .kontakt p,
-    .kontakt a {
-        margin: 0;
+    .kontakt-info {
         font-size: 28px;
-        color: white;
-        text-decoration: none;
-        line-height: 1.4;
+        display: block; 
+        text-align: left; 
+    }
+}
+
+@media (max-width: 412px) {
+    footer {
+        padding: 20px 0;
     }
 
-    .kontakt a:hover {
-        text-decoration: underline;
+    .kontakty {
+        width: 100%;
+        padding: 0 10px;
+        flex-direction: column;
+        gap: 20px;
     }
 
-    .inside {
-        width: fit-content;
+    .border {
+        width: 300px; 
+        height: auto;
+        padding: 20px;
+        gap: 20px; 
+    }
+
+    .napis-kontakty {
+        font-size: 40px; 
+        margin-bottom: 0px;
+    }
+
+    .socials {
+        gap: 20px;
+        padding-left: 0; 
+        align-items: center; 
+    }
+
+    .socials::before,
+    .socials::after {
+        display: none;
+    }
+
+    .kontakt {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
+        width: fit-content; 
+        padding: 10px; 
+        margin-left: auto; 
+        margin-right: auto;
+    }
+
+    .kontakt img {
+        width: 36px; 
+        height: 36px;
+    }
+
+    .kontakt-info {
+        display: none;
+        white-space: nowrap; 
+        text-align: center; 
+    }
+
+    .kontakt-info.show {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .border {
+        width: 300px;
+        height: auto;
+        padding: 20px;
+        gap: 20px;
+        border: 3px solid white; 
     }
 }

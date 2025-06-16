@@ -197,7 +197,7 @@
             <div class="texty">
                 <div class="text-wrapper">
                     <article class="horny text">
-                    <p>
+                    <p class="expandable-text" data-fulltext-id="horny-fulltext">
                     Od roku 2017 každoročne organizujeme verejné preteky v stredisku
                     Sportcentrum Oščadnica. Súťaží sa v kategóriách a o najlepší čas
                     z celých pretekov, kde najrýchlejší získa pohár starostu obce Oščadnica.
@@ -205,6 +205,10 @@
                     Taktiež v tomto stredisku organizujeme aj Valentínsky pretek, kde ľudia
                     tvoria páry muž a žena. Kategórie sa delia podľa súčtu rokov konkrétnej dvojice.
                     </p>
+
+                    <div class="toggle-container">
+                        <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="horny">
+                    </div>
                     </article>
 
                     <div class="obrazky">
@@ -213,16 +217,136 @@
                     </div>
 
                     <article class="spodny text">
-                        <p>
+                        <p class="expandable-text" data-fulltext-id="horny-fulltext">
                         V tomto stredisku každoročne organizujeme aj preteky na Memoriál Petra Harvana.
                         Párkrát sa u nás konali aj preteky Slovenského pohára a máme v pláne tieto preteky
                         tu organizovať aj naďalej. Vďaka skvelej spolupráci s členmi SkiTeam-u a aj zamestnancov
                         Snowparadise Veľká Rača si pochvaľovali naše podmienky na pretekanie.
                         </p>
+
+                        <div class="toggle-container">
+                        <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="spodny">
+                        </div>
+
                     </article>
                 </div>
             </div>
         </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const fullTexts = {}; // Objekt na uloženie pôvodných, celých textov
+                    
+                    // Kľúčové frázy pre skrátenie textu na mobile
+                    // Tieto frázy budú použité na určenie, kde sa text na mobile skráti
+                    const mobileTruncatePhrases = {
+                        'horny': 'najlepší čas z celých',
+                        'spodny': 'pohára a máme v pláne'
+                    };
+
+                    function isMobile() {
+                        return window.innerWidth <= 412; // Kontrola šírky pre mobil
+                    }
+
+                    const toggleArrows = document.querySelectorAll('.toggle-arrow');
+
+                    toggleArrows.forEach(arrow => {
+                        const textContainer = arrow.closest('.text');
+                        const expandableText = textContainer.querySelector('.expandable-text');
+                        const fulltextId = expandableText.dataset.fulltextId;
+
+                        // Uložíme pôvodný, celý text pri načítaní, ak už nie je uložený
+                        if (!fullTexts[fulltextId]) {
+                            fullTexts[fulltextId] = expandableText.textContent.trim();
+                        }
+
+                        function applyTextState() {
+                            if (isMobile()) {
+                                // Na mobilnej verzii:
+                                arrow.closest('.toggle-container').style.display = 'block'; // Zobrazí šípku
+                                
+                                // Skrátenie textu pre mobil
+                                const phrase = mobileTruncatePhrases[arrow.dataset.target];
+                                if (phrase) {
+                                    const index = fullTexts[fulltextId].indexOf(phrase);
+                                    if (index !== -1) {
+                                        const truncatedText = fullTexts[fulltextId].substring(0, index + phrase.length) + '...';
+                                        expandableText.textContent = truncatedText;
+                                    } else {
+                                        expandableText.textContent = fullTexts[fulltextId]; // Ak sa fráza nenájde, zobraz celý
+                                    }
+                                } else {
+                                    expandableText.textContent = fullTexts[fulltextId]; // Ak nie je definovaná fráza, zobraz celý
+                                }
+
+                                // Inicializácia stavu: Na mobile je text predvolene "collapsed"
+                                if (!expandableText.classList.contains('expanded')) { // Ak ešte nie je rozbalený
+                                    expandableText.classList.add('collapsed');
+                                    expandableText.classList.remove('expanded');
+                                    arrow.classList.remove('rotated'); // Šípka smeruje nadol
+                                } else {
+                                    // Ak je už "expanded" (napr. po zmene orientácie), uistíme sa, že je správne nastavená šípka a celý text
+                                    arrow.classList.add('rotated');
+                                    expandableText.textContent = fullTexts[fulltextId]; // Zobrazí celý text
+                                }
+
+                            } else {
+                                // Na desktop/tablet verzii:
+                                arrow.closest('.toggle-container').style.display = 'none'; // Skryje šípku
+                                expandableText.classList.remove('collapsed'); // Zabezpečí, že text nie je skrytý CSS triedou
+                                expandableText.classList.add('expanded'); // Zabezpečí, že max-height je "none"
+                                arrow.classList.remove('rotated'); // Zabezpečí, že šípka nie je otočená
+
+                                // Zobrazenie celého textu na desktop/tablet
+                                expandableText.textContent = fullTexts[fulltextId];
+                            }
+                        }
+
+                        // Aplikuj stav pri načítaní stránky
+                        applyTextState();
+
+                        // Pridaj poslucháča udalosti kliknutia na šípku (funguje len na mobil)
+                        arrow.addEventListener('click', function() {
+                            if (isMobile()) {
+                                if (expandableText.classList.contains('collapsed')) {
+                                    expandableText.classList.remove('collapsed');
+                                    expandableText.classList.add('expanded');
+                                    arrow.classList.add('rotated'); // Otočí šípku hore
+                                    expandableText.textContent = fullTexts[fulltextId]; // Zobrazí celý text
+                                } else {
+                                    expandableText.classList.remove('expanded');
+                                    expandableText.classList.add('collapsed');
+                                    arrow.classList.remove('rotated'); // Vráti šípku nadol
+                                    
+                                    // Po zbalení text opäť skrátime (aby bol konzistentný s počiatočným stavom)
+                                    const phrase = mobileTruncatePhrases[arrow.dataset.target];
+                                    if (phrase) {
+                                        const index = fullTexts[fulltextId].indexOf(phrase);
+                                        if (index !== -1) {
+                                            const truncatedText = fullTexts[fulltextId].substring(0, index + phrase.length) + '...';
+                                            expandableText.textContent = truncatedText;
+                                        } else {
+                                            expandableText.textContent = fullTexts[fulltextId];
+                                        }
+                                    } else {
+                                        expandableText.textContent = fullTexts[fulltextId];
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // Poslucháč pre zmenu veľkosti okna, aby sa dynamicky menilo správanie
+                    window.addEventListener('resize', function() {
+                        toggleArrows.forEach(arrow => {
+                            const textContainer = arrow.closest('.text');
+                            const expandableText = textContainer.querySelector('.expandable-text');
+                            const fulltextId = expandableText.dataset.fulltextId;
+                            applyTextState(); // Znovu aplikuj stav pre všetky texty
+                        });
+                    });
+                });
+            </script>
         </section>
 <!----------------------------galeria------------------------->
         <section class="galeria" id="galeria">
@@ -267,38 +391,72 @@
         <footer>
             <section class="kontakty" id="kontakty">
                 <div class="border">
+                    <h1 class="napis-kontakty">KONTAKTY</h1>
                     <address class="socials">
-                        <div class="inside">
-                            <div class="kontakt">
-                                <img src="pictures/osoba.png" alt="osoba">
-                                <p>Mgr. Dušan Poláček</p>
-                            </div>
+                        <div class="kontakt" data-target="osoba">
+                            <img src="pictures/osoba.png" alt="osoba">
+                            <p class="kontakt-info" id="info-osoba">Mgr. Dušan Poláček</p>
+                        </div>
 
-                            <div class="kontakt">
-                                <img src="pictures/mobil.png" alt="mobil">
-                                <p>+421 905 811 619</p>
-                            </div>
+                        <div class="kontakt" data-target="mobil">
+                            <img src="pictures/mobil.png" alt="mobil">
+                            <p class="kontakt-info" id="info-mobil">+421 905 811 619</p>
+                        </div>
 
-                            <div class="kontakt">
-                                <img src="pictures/mapa.png" alt="mapa">
-                                <p>Oščadnica 1851,<br>023 01 Oščadnica</p>
-                            </div>
+                        <div class="kontakt" data-target="mapa">
+                            <img src="pictures/mapa.png" alt="mapa">
+                            <p class="kontakt-info" id="info-mapa">Oščadnica 1851,<br>023 01 Oščadnica</p>
+                        </div>
 
-                            <div class="kontakt">
-                                <img src="pictures/instagram.png" alt="instagram">
-                                <a href="https://www.instagram.com/skiteamoscadnica/" target="_blank"><strong>@skiteamoscadnica</strong></a> <!--otvori sa na novej karte-->
-                            </div>
+                        <div class="kontakt" data-target="instagram">
+                            <img src="pictures/instagram.png" alt="instagram">
+                            <a href="https://www.instagram.com/skiteamoscadnica/" target="_blank" class="kontakt-info" id="info-instagram"><strong>@skiteamoscadnica</strong></a>
+                        </div>
 
-                            <div class="kontakt">
-                                <img src="pictures/facebook.png" alt="facebook">
-                                <a href="https://www.facebook.com/p/Ski-team-O%C5%A1%C4%8Dadnica-100079897191424/" target="_blank"><strong>Ski Team Oščadnica</strong></a>
-                            </div>
+                        <div class="kontakt" data-target="facebook">
+                            <img src="pictures/facebook.png" alt="facebook">
+                            <a href="https://www.facebook.com/p/Ski-team-O%C5%A1%C4%8Dadnica-100079897191424/" target="_blank" class="kontakt-info" id="info-facebook"><strong>Ski Team Oščadnica</strong></a>
                         </div>
                     </address>
-                    <h1 class="napis-kontakty">KONTAKTY</h1>
                 </div>
             </section>
         </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const kontaktItems = document.querySelectorAll('.kontakt');
+
+                function isMobileView() {
+                    return window.matchMedia('(max-width: 412px)').matches;
+                }
+
+                kontaktItems.forEach(item => {
+                    item.addEventListener('click', function(event) {
+                        event.stopPropagation(); 
+                        
+                        const infoElement = this.querySelector('.kontakt-info');
+
+                        if (isMobileView() && infoElement) {
+                            infoElement.classList.toggle('show');
+                        }
+                    });
+                });
+                function handleResize() {
+                    kontaktItems.forEach(item => {
+                        const infoElement = item.querySelector('.kontakt-info');
+                        if (infoElement) {
+                            if (isMobileView()) {
+                                infoElement.classList.remove('show');
+                            } else {
+                                infoElement.classList.add('show');
+                            }
+                        }
+                    });
+                }
+                handleResize();
+                window.addEventListener('resize', handleResize);
+            });
+        </script>
     </main>
 </body>
 </html>
