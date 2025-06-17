@@ -38,6 +38,10 @@ body {
     overflow-x: hidden;
 }
 
+body.no-scroll { /* Used by JS to prevent scrolling when menu is open */
+    overflow: hidden;
+}
+
 .main-container {
     background-image: url(pictures/pozadie\ header.png);
     width: 100%;
@@ -71,7 +75,7 @@ ul {
     padding: 10px 0;
     width: 100%;
     align-items: center;
-    width: 1152px;
+    max-width: 1152px;
 }
 
 ul li a {
@@ -158,6 +162,146 @@ header{
 
     .container-header {
         padding-top: 30px;
+    }
+}
+
+@media (max-width: 412px) {
+    .container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 16px;
+        width: 100%;
+        max-width: 300px; /* Constrain header block width */
+        margin: 0 auto; /* Center the header block */
+        box-sizing: border-box;
+    }
+
+    .logo {
+        width: 80px; /* Keep logo size as desired */
+        margin-bottom: 0;
+    }
+
+    /* Hide your existing <nav> on mobile */
+    .container-header nav {
+        display: none;
+    }
+
+    /* Hamburger Menu Icon Positioning */
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 35px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1100;
+
+        /* Precise Positioning for Alignment */
+        position: fixed; /* Keep it fixed to the viewport */
+        top: 45px; /* Adjust this value to vertically align with the logo */
+        right: calc(50% - 150px + 20px); /* Position relative to the 300px block and 20px from its right edge */
+                                        /* (50% - 150px) gives the left edge of the 300px centered block.
+                                           Add 20px for padding from the right of that block. */
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger-menu .bar {
+        width: 100%;
+        height: 4px;
+        background-color: white;
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Hamburger animation (already provided, keeping for context) */
+    .hamburger-menu.open .bar:nth-child(1) {
+        transform: translateY(13px) rotate(45deg);
+    }
+    .hamburger-menu.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.open .bar:nth-child(3) {
+        transform: translateY(-13px) rotate(-45deg);
+    }
+
+    /* Mobile Navigation Overlay */
+    .mobile-nav-overlay {
+        position: fixed; /* Make the overlay fixed at the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        z-index: 999;
+    }
+
+
+    .mobile-nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-nav-overlay ul { /* Styles for the list inside the overlay */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 25px; /* Space between menu items */
+        width: auto; /* Allow content to define width */
+    }
+
+    .mobile-nav-overlay ul li a {
+        text-decoration: none;
+        color: white; /* Default text color */
+        font-size: 30px; /* Larger font size for mobile menu items */
+        padding: 10px 20px; /* Larger hit area */
+        border-radius: 10px; /* Rounded corners for background */
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: block; /* Make the whole padding area clickable */
+        text-align: center; /* Center text within padding */
+        font-family: 'Poppins', sans-serif; /* Use your main font */
+        font-weight: bold;
+    }
+
+    /* Hover and Active states for mobile menu items */
+    .mobile-nav-overlay ul li a:hover {
+        background-color: rgba(49, 53, 65, 0.7); /* Darker background on hover */
+        color: white; /* Text color remains white */
+    }
+
+    .mobile-nav-overlay ul li a.active-link { /* Class added by JavaScript */
+        background-color: rgba(49, 53, 65, 0.7); /* Dark background for active link */
+        color: white; /* Text color remains white */
+    }
+
+    /* Hide the special quote on mobile */
+    .mobile-nav-overlay ul li a.special-quote {
+        display: none;
+    }
+}
+
+/* Desktop styles: show original nav, hide mobile elements */
+@media (min-width: 413px) { /* Adjust breakpoint as needed */
+    .container-header nav {
+        display: block; /* Show desktop nav */
+    }
+    .hamburger-menu, .mobile-nav-overlay {
+        display: none; /* Hide mobile elements */
+    }
+    .container-header {
+        justify-content: center; /* Center desktop header content */
+        padding: 40px 0; /* Revert desktop padding */
     }
 }
 
@@ -307,6 +451,110 @@ header{
         margin-top: 100px;
         margin-left: 40px;
         width: 480px;
+    }
+}
+
+@media (max-width: 412px) {
+    .o-nas {
+        padding: 40px 0;
+        gap: 70px;
+        align-items: center;
+    }
+
+    .content {
+        flex-direction: column !important;
+        height: auto;
+        gap: 0;
+        max-width: 300px;
+        width: 100%;
+        padding: 20px 20px 30px 20px;
+        border-radius: 16px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .o-nas .content:nth-child(odd) {
+        flex-direction: column !important;
+    }
+
+    .txt {
+        order: 1; /* Place .txt content first */
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #313541; /* Default text color for the section */
+    }
+
+    .picture {
+        order: 2; /* Place .picture content second (at the bottom) */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px; /* Space between the text content and the image */
+    }
+
+    .picture img {
+        width: 260px;
+        height: 330px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .span-container {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+        margin-bottom: 20px; /* Space below the number/title block before paragraph */
+        width: auto;
+        padding: 0;
+    }
+
+    .cislo img {
+        width: auto; /* Larger number image for prominence */
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .sipka img {
+        display: none;
+    }
+
+    /* SWAPPED STYLES HERE */
+    .txt-1 { /* Now the SUBTITLE (e.g., "Preteky") */
+        font-size: 20px; /* Smaller font size for the subtitle */
+        color: #313541; /* Faded color */
+        font-weight: bolder; /* Less bold */
+        margin-top: 5px; 
+        margin-bottom: -85px;
+    }
+
+    .txt-2 { /* Now the MAIN TITLE (e.g., "O.klube") */
+        font-size: 48px; /* Larger font size for the main title */
+        color: #313541; /* Darker color */
+        font-weight: bolder; /* More bold */
+        margin: 0; 
+        margin-top: 20px;
+        margin-bottom: 60px;
+        padding-bottom: 0px;
+    }
+
+
+    .o-nas p {
+        width: 100%;
+        margin: 0;
+        padding: 0 15px;
+        font-size: 18px;
+        line-height: 1.6;
+        color: white; /* Main paragraph text remains white on grey card */
+        box-sizing: border-box;
     }
 }
 
@@ -511,6 +759,83 @@ article[class^="card-"] img {
 
     .treneri p {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 412px) {
+    .nasi-treneri {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .view {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        padding: 0;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .slider-wrapper {
+        width: 100%;
+        height: auto;
+        padding-top: 80px;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+    }
+
+    article[class^="card-"] {
+        width: 300px;
+        height: auto;
+        padding-top: 120px;
+        position: relative; /* Added this to contain the absolutely positioned image */
+        overflow: visible; /* Changed from default to ensure image isn't clipped */
+    }
+
+    article[class^="card-"]:hover {
+        transform: none;
+        z-index: 1;
+    }
+
+    article[class^="card-"] img {
+        width: 160px;
+        height: 160px;
+        top: -80px;
+        left: 50%; /* Center the image horizontally */
+        transform: translateX(-50%); /* Adjust for exact centering */
+    }
+
+    .card-1 {
+        padding-top: 120px;
+    }
+
+    .nadpis-2 h1 {
+        font-size: 40px;
+        padding: 0 20px;
+    }
+
+    .nadpis-2 p {
+        font-size: 18px;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .treneri h1 {
+        font-size: 28px;
+    }
+
+    .treneri h4 {
+        font-size: 22px;
+    }
+
+    .treneri p {
+        font-size: 18px;
+        padding: 0 10px;
     }
 }
 
@@ -1061,6 +1386,7 @@ article[class^="card-"] img {
     .galeria h1 {
         font-size: 40px;
         margin-bottom: 20px;
+        padding: 0;
     }
 
     .gallery-container {
@@ -1095,10 +1421,10 @@ article[class^="card-"] img {
 footer {
     color: white;
     font-family: Arial, sans-serif;
-    padding: 40px 0;
+    padding: 60px 0; /* Increased padding */
     display: flex;
     justify-content: center; 
-    min-height: 200px;
+    min-height: 300px; /* Increased min-height */
     box-sizing: border-box;
 }
 
@@ -1115,7 +1441,7 @@ footer {
 .border {
     width: 1152px;
     height: auto;
-    padding: 30px; 
+    padding: 40px; /* Increased padding */
     border-radius: 8px;
     display: flex; 
     flex-direction: row-reverse; 
@@ -1136,53 +1462,49 @@ h1.napis-kontakty {
     font-weight: bold;
     flex-shrink: 0; 
     text-align: left; 
+    padding-right: 20px; /* Added spacing */
 }
 
 .socials {
     display: flex;
     flex-direction: column; 
-    align-items: center; 
-    gap: 36px; 
+    align-items: center; /* Changed to flex-start */
+    gap: 40px; /* Increased gap */
     position: relative;
-    padding: 0 40px; 
+    padding: 0 60px; /* Increased padding */
     flex-grow: 1; 
 }
 
-.socials::before {
+.socials::before,
+.socials::after {
     content: "";
     position: absolute;
-    top: 390px;
-    bottom: 0;
-    left: 0; 
     width: 6px; 
     height: 247px;
     background-color: white;
     border-radius: 3px; 
 }
 
+.socials::before {
+    top: 350px;
+    left: 0; 
+}
+
 .socials::after {
-    content: "";
-    position: absolute;
-    top: -110px;
-    bottom: 0;
+    top: -125px;
     right: 0; 
-    width: 6px; 
-    height: 247px;
-    background-color: white;
-    border-radius: 3px; 
-    display: block; 
 }
 
 .kontakt {
     display: flex;
     flex-direction: row; 
     align-items: center; 
-    gap: 35px;
+    gap: 40px; /* Increased gap */
     cursor: pointer;
-    padding: 5px 0; 
+    padding: 15px 0; /* Increased padding */
     transition: background-color 0.3s ease; 
     width: 100%; 
-    justify-content: center; 
+    justify-content: start; 
 }
 
 .kontakt img {
@@ -1196,19 +1518,33 @@ h1.napis-kontakty {
     font-size: 36px; 
     color: white;
     text-decoration: none;
-    line-height: 1.4;
+    line-height: 1.6; /* Increased line height */
     display: block;
-    text-align: center; 
+    text-align: left; /* Changed to left */
+}
+
+.kontakt-info p {
+    margin: 15px 0; /* Added paragraph spacing */
+    font-size: 24px; /* Adjusted font size */
 }
 
 .kontakt-info a {
     color: white;
     text-decoration: none;
     font-weight: normal;
+    display: block;
+    margin: 10px 0; /* Added link spacing */
 }
 
 .kontakt-info a:hover {
     text-decoration: underline;
+}
+
+/* Additional spacing for specific elements */
+.kontakt-info br {
+    display: block;
+    margin: 10px 0; /* Increased line break spacing */
+    content: " ";
 }
 
 @media (min-width: 413px) and (max-width: 1200px) {
@@ -1245,8 +1581,9 @@ h1.napis-kontakty {
     .socials::before { 
         left: 30px;
     }
+
     .socials::after {
-        display: none; 
+        top: -160px; 
     }
 
     .kontakt img {
@@ -1321,5 +1658,10 @@ h1.napis-kontakty {
         height: auto; /* Zobrazí text */
         opacity: 1; /* Zobrazí text */
         padding-top: 5px; /* Pridá trochu paddingu po zobrazení */
+        font-weight: bold;
+    }
+
+    .kontakt-info.show p {
+        font-size: 18px;
     }
 }

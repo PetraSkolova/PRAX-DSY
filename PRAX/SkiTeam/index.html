@@ -31,7 +31,121 @@
                 </nav>
             </div>
         </div>
+
+        <div class="hamburger-menu" id="hamburgerMenu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="mobile-nav-overlay" id="mobileNavOverlay">
+            <ul>
+                <li><a href="#domov">Domov</a></li>
+                <li><a href="#onas">O nás</a></li>
+                <li><a href="#treneri">Naši tréneri</a></li>
+                <li><a href="#podujatia">Podujatia</a></li>
+                <li><a href="#galeria">Galéria</a></li>
+                <li><a href="#kontakty">Kontakty</a></li>
+            </ul>
+        </nav>
+
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+            const mobileNavLinks = mobileNavOverlay.querySelectorAll('ul li a');
+
+            // Function to toggle the mobile menu
+            function toggleMobileMenu() {
+                hamburgerMenu.classList.toggle('open');
+                mobileNavOverlay.classList.toggle('active');
+                // Prevent scrolling when menu is open
+                document.body.classList.toggle('no-scroll');
+            }
+
+            // Event listener for hamburger icon click
+            if (hamburgerMenu) {
+                hamburgerMenu.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Event listener for mobile navigation links click
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    // Close the menu
+                    toggleMobileMenu();
+
+                    // Smooth scroll to section
+                    event.preventDefault(); // Prevent default anchor jump
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Update active link state
+                    updateActiveLink(targetId);
+                });
+            });
+
+            // Function to update the active link based on scroll position
+            function updateActiveLink(currentHash) {
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === currentHash) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+
+            // Observe sections to update active link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Adjust as needed, 0.5 means 50% of the section is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateActiveLink('#' + entry.target.id);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Initialize active link on page load based on current URL hash
+            // Using 'load' event ensures all content is loaded and offsets are correct
+            window.addEventListener('load', () => {
+                if (window.location.hash) {
+                    updateActiveLink(window.location.hash);
+                    // Also scroll to it if page loads with a hash
+                    const initialTarget = document.querySelector(window.location.hash);
+                    if (initialTarget) {
+                        window.scrollTo({
+                            top: initialTarget.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    // If no hash, consider the first section as active initially
+                    if (sections.length > 0) {
+                        updateActiveLink('#' + sections[0].id);
+                    }
+                }
+            });
+        });
+    </script>
+
 <!----------------------------o nas------------------------->
     <main>
         <section class="o-nas" id="onas">
@@ -97,98 +211,98 @@
         </section>
 <!----------------------------nasi treneri------------------------->
         <section class="nasi-treneri" id="treneri">
-        <div class="nadpis-2">
-            <h1>Naši tréneri</h1>
-            <p>SkiTeam Oščadnica - tu sú sny na snehu realita!</p>
-        </div>
-
-        <section class="view">
-            <div class="slider-wrapper">
-            <article class="card-1">
-                <img src="pictures/oliver.png" alt="oliver">
-                <div class="treneri">
-                <p>Skúsenosti: 1 rok ako tréner rôznych vekových kategórií
-                    Špecializácia: upevňovanie techniky zjazdového lyžovania
-                    Charakteristika: Flexibilný a prispôsobivý, dokáže okamžite reagovať na potreby športovcov
-                </p>
-                <h1>Oliver Pawlus</h1>
-                <h4>Tréner</h4>
-                </div>
-            </article>
-
-            <article class="card-2">
-                <img src="pictures/anca.png" alt="anca">
-                <div class="treneri">
-                <p>Skúsenosti: 2 roky trénerka
-                    Špecializácia: Precízne zvládnutie carvingu, optimalizácia pohybu na svahu
-                    Charakteristika: Trpezlivá a detailná, so schopnosťou vysvetliť aj tie najkomplexnejšie pohyby. Je obľúbená medzi začiatočníkmi aj pokročilými.
-                </p>
-                <h1>Anna Mikulová</h1>
-                <h4>Trénerka</h4>
-                </div>
-            </article>
-
-            <article class="card-3">
-                <img src="pictures/dusan.png" alt="dusan">
-                <div class="treneri">
-                <p>Skúsenosti: 20 rokov ako profesionálny lyžiarsky tréner
-                    Špecializácia: technika zjazdového lyžovania, mentoring mladších trénerov
-                    Charakteristika: Autoritatívny, no zároveň empatický líder s vášňou pre lyžovanie. Vždy hľadá spôsoby, ako posúvať zverených športovcov na vyššiu úroveň.
-                </p>
-                <h1>Dušan Poláček</h1>
-                <h4>Zakladateľ (šéfino)</h4>
-                </div>
-            </article>
-
-            <article class="card-4">
-                <img src="pictures/petra.png" alt="petra">
-                <div class="treneri">
-                <p>Skúsenosti: 2 roky praxe, bývalá súťažná lyžiarka v mládežníckych kategóriách
-                    Špecializácia: Práca s deťmi a mladistvými, budovanie sebadôvery u začiatočníkov
-                    Charakteristika: Energická, vždy pozitívne naladená. Jej tréningy sú zábavné a motivujúce.
-                </p>
-                <h1>Petra Školová</h1>
-                <h4>Trénerka</h4>
-                </div>
-            </article>
-
-            <article class="card-5">
-                <img src="pictures/matys.png" alt="matys">
-                <div class="treneri">
-                <p>Skúsenosti: 5 rokov tréningu mládeže, špecialista na opravu a nastavenie lyžiarskeho vybavenia
-                    Špecializácia: Rýchlostné disciplíny a výber správnej techniky pre súťažné podmienky
-                    Charakteristika: Praktický a vecný, jeho rady vždy pomáhajú zlepšiť výkon na svahu.
-                </p>
-                <h1>Matys Poláček</h1>
-                <h4>Tréner</h4>
-                </div>
-            </article>
-
-            <article class="card-6">
-                <img src="pictures/klaudi.png" alt="klaudi">
-                <div class="treneri">
-                <p>Skúsenosti: 3 roky 
-                    Špecializácia: Mentálne nastavenie, zvládanie stresu počas pretekov
-                    Charakteristika: Podporujúca, empatická. Rozpozná a rieši psychické prekážky športovcov
-                </p>
-                <h1>Klaudia Smolková</h1>
-                <h4>Trénerka</h4>
-                </div>
-            </article>
-
-            <article class="card-7">
-                <img src="pictures/sara.png" alt="sara">
-                <div class="treneri">
-                <p>Skúsenosti: 1 rok ako trénerka a špecialistka na prevenciu zranení
-                    Špecializácia: Kondičná príprava, posilňovanie a flexibilita pre lyžiarov
-                    Charakteristika: Profesionálna a dôsledná. Dokáže spojiť fyzickú prípravu so zlepšovaním techniky na svahu.
-                </p>
-                <h1>Sára Ismailová</h1>
-                <h4>Trénerka</h4>
-                </div>
-            </article>
+            <div class="nadpis-2">
+                <h1>Naši tréneri</h1>
+                <p>SkiTeam Oščadnica - tu sú sny na snehu realita!</p>
             </div>
-        </section>
+
+            <section class="view">
+                <div class="slider-wrapper">
+                <article class="card-1">
+                    <img src="pictures/oliver.png" alt="oliver">
+                    <div class="treneri">
+                    <p>Skúsenosti: 1 rok ako tréner rôznych vekových kategórií
+                        Špecializácia: upevňovanie techniky zjazdového lyžovania
+                        Charakteristika: Flexibilný a prispôsobivý, dokáže okamžite reagovať na potreby športovcov
+                    </p>
+                    <h1>Oliver Pawlus</h1>
+                    <h4>Tréner</h4>
+                    </div>
+                </article>
+
+                <article class="card-2">
+                    <img src="pictures/anca.png" alt="anca">
+                    <div class="treneri">
+                    <p>Skúsenosti: 2 roky trénerka
+                        Špecializácia: Precízne zvládnutie carvingu, optimalizácia pohybu na svahu
+                        Charakteristika: Trpezlivá a detailná, so schopnosťou vysvetliť aj tie najkomplexnejšie pohyby. Je obľúbená medzi začiatočníkmi aj pokročilými.
+                    </p>
+                    <h1>Anna Mikulová</h1>
+                    <h4>Trénerka</h4>
+                    </div>
+                </article>
+
+                <article class="card-3">
+                    <img src="pictures/dusan.png" alt="dusan">
+                    <div class="treneri">
+                    <p>Skúsenosti: 20 rokov ako profesionálny lyžiarsky tréner
+                        Špecializácia: technika zjazdového lyžovania, mentoring mladších trénerov
+                        Charakteristika: Autoritatívny, no zároveň empatický líder s vášňou pre lyžovanie. Vždy hľadá spôsoby, ako posúvať zverených športovcov na vyššiu úroveň.
+                    </p>
+                    <h1>Dušan Poláček</h1>
+                    <h4>Zakladateľ (šéfino)</h4>
+                    </div>
+                </article>
+
+                <article class="card-4">
+                    <img src="pictures/petra.png" alt="petra">
+                    <div class="treneri">
+                    <p>Skúsenosti: 2 roky praxe, bývalá súťažná lyžiarka v mládežníckych kategóriách
+                        Špecializácia: Práca s deťmi a mladistvými, budovanie sebadôvery u začiatočníkov
+                        Charakteristika: Energická, vždy pozitívne naladená. Jej tréningy sú zábavné a motivujúce.
+                    </p>
+                    <h1>Petra Školová</h1>
+                    <h4>Trénerka</h4>
+                    </div>
+                </article>
+
+                <article class="card-5">
+                    <img src="pictures/matys.png" alt="matys">
+                    <div class="treneri">
+                    <p>Skúsenosti: 5 rokov tréningu mládeže, špecialista na opravu a nastavenie lyžiarskeho vybavenia
+                        Špecializácia: Rýchlostné disciplíny a výber správnej techniky pre súťažné podmienky
+                        Charakteristika: Praktický a vecný, jeho rady vždy pomáhajú zlepšiť výkon na svahu.
+                    </p>
+                    <h1>Matys Poláček</h1>
+                    <h4>Tréner</h4>
+                    </div>
+                </article>
+
+                <article class="card-6">
+                    <img src="pictures/klaudi.png" alt="klaudi">
+                    <div class="treneri">
+                    <p>Skúsenosti: 3 roky 
+                        Špecializácia: Mentálne nastavenie, zvládanie stresu počas pretekov
+                        Charakteristika: Podporujúca, empatická. Rozpozná a rieši psychické prekážky športovcov
+                    </p>
+                    <h1>Klaudia Smolková</h1>
+                    <h4>Trénerka</h4>
+                    </div>
+                </article>
+
+                <article class="card-7">
+                    <img src="pictures/sara.png" alt="sara">
+                    <div class="treneri">
+                    <p>Skúsenosti: 1 rok ako trénerka a špecialistka na prevenciu zranení
+                        Špecializácia: Kondičná príprava, posilňovanie a flexibilita pre lyžiarov
+                        Charakteristika: Profesionálna a dôsledná. Dokáže spojiť fyzickú prípravu so zlepšovaním techniky na svahu.
+                    </p>
+                    <h1>Sára Ismailová</h1>
+                    <h4>Trénerka</h4>
+                    </div>
+                </article>
+                </div>
+            </section>
         </section>
 <!----------------------------podujatia------------------ak budem stihat dorobit sipky------->
         <section class="podujatia" id="podujatia">
@@ -345,7 +459,7 @@
                     const toggleArrow = toggleContainer?.querySelector(".toggle-arrow");
 
                     // Skontroluj, či text presahuje 100px
-                    if (textEl.scrollHeight <= 100) {
+                    if (textEl.scrollHeight <= 10) {
                         toggleContainer.style.display = "none"; // Skryť šípku ak nie je čo rozbaliť
                         return;
                     }
@@ -408,37 +522,39 @@
         </section>
 <!----------------------------kontakty/footer------------------------->
         <footer>
-            <section class="kontakty" id="kontakty">
-                <div class="border">
-                    <h1 class="napis-kontakty">KONTAKTY</h1>
-                    <address class="socials">
-                            <div class="kontakt" data-target="osoba">
-                                <img src="pictures/osoba.png" alt="osoba">
-                                <p class="kontakt-info" id="info-osoba">Mgr. Dušan Poláček</p>
-                            </div>
+                <section class="kontakty" id="kontakty">
+                    <div class="border">
+                        <h1 class="napis-kontakty">KONTAKTY</h1>
+                        <address class="socials">
+                            <div>
+                                <div class="kontakt" data-target="osoba">
+                                    <img src="pictures/osoba.png" alt="osoba">
+                                    <p class="kontakt-info" id="info-osoba">Mgr. Dušan Poláček</p>
+                                </div>
 
-                            <div class="kontakt" data-target="mobil">
-                                <img src="pictures/mobil.png" alt="mobil">
-                                <p class="kontakt-info" id="info-mobil">+421 905 811 619</p>
-                            </div>
+                                <div class="kontakt" data-target="mobil">
+                                    <img src="pictures/mobil.png" alt="mobil">
+                                    <p class="kontakt-info" id="info-mobil">+421 905 811 619</p>
+                                </div>
 
-                            <div class="kontakt" data-target="mapa">
-                                <img src="pictures/mapa.png" alt="mapa">
-                                <p class="kontakt-info" id="info-mapa">Oščadnica 1851,<br>023 01 Oščadnica</p>
-                            </div>
+                                <div class="kontakt" data-target="mapa">
+                                    <img src="pictures/mapa.png" alt="mapa">
+                                    <p class="kontakt-info" id="info-mapa">Oščadnica 1851,<br>023 01 Oščadnica</p>
+                                </div>
 
-                            <div class="kontakt" data-target="instagram">
-                                <img src="pictures/instagram.png" alt="instagram">
-                                <a href="https://www.instagram.com/skiteamoscadnica/" target="_blank" class="kontakt-info" id="info-instagram"><strong>@skiteamoscadnica</strong></a>
-                            </div>
+                                <div class="kontakt" data-target="instagram">
+                                    <img src="pictures/instagram.png" alt="instagram">
+                                    <a href="https://www.instagram.com/skiteamoscadnica/" target="_blank" class="kontakt-info" id="info-instagram"><strong>@skiteamoscadnica</strong></a>
+                                </div>
 
-                            <div class="kontakt" data-target="facebook">
-                                <img src="pictures/facebook.png" alt="facebook">
-                                <a href="https://www.facebook.com/p/Ski-team-O%C5%A1%C4%8Dadnica-100079897191424/" target="_blank" class="kontakt-info" id="info-facebook"><strong>Ski Team Oščadnica</strong></a>
+                                <div class="kontakt" data-target="facebook">
+                                    <img src="pictures/facebook.png" alt="facebook">
+                                    <a href="https://www.facebook.com/p/Ski-team-O%C5%A1%C4%8Dadnica-100079897191424/" target="_blank" class="kontakt-info" id="info-facebook"><strong>Ski Team Oščadnica</strong></a>
+                                </div>
                             </div>
-                    </address>
-                </div>
-            </section>
+                        </address>
+                    </div>
+                </section>
         </footer>
 
         <script>
