@@ -988,98 +988,114 @@ footer {
     color: white;
     font-family: Arial, sans-serif;
     padding: 40px 0;
+    display: flex;
+    justify-content: center; 
+    min-height: 200px;
 }
 
 .kontakty {
     display: flex;
-    justify-content: center;
-    align-items: center; 
-    width: 1440px;
-    margin: 0 auto;
+    justify-content: center; 
+    align-items: center;
+    width: 100%; 
+    max-width: 1440px;  
+    margin: 0 auto; 
+    box-sizing: border-box;
 }
 
 .border {
     width: 1152px;
-    height: auto; 
-    padding: 30px 50px;
+    height: auto;
+    padding: 30px; 
     border-radius: 8px;
-    display: flex;
-    flex-direction: column; 
+    display: flex; 
+    flex-direction: row-reverse; 
     align-items: center; 
-    gap: 40px; 
+    gap: 120px; 
     position: relative;
+    box-sizing: border-box;
 }
 
-.napis-kontakty {
-    font-size: 65px;
-    margin: 0;
+h1.napis-kontakty {
+    font-size: 60px;
+    letter-spacing: 30px; 
     color: white;
-    text-align: center; 
+    margin: 0;
+    writing-mode: vertical-lr; 
+    text-orientation: upright; 
+    white-space: nowrap; 
+    font-weight: bold;
+    flex-shrink: 0; 
+    text-align: left; 
 }
 
 .socials {
     display: flex;
     flex-direction: column; 
-    gap: 36px;
     align-items: center; 
-    justify-content: center;
-    width: 100%; 
+    gap: 36px; 
     position: relative;
-    padding-left: 0px; 
+    padding: 0 40px; 
+    flex-grow: 1; 
 }
 
-.socials::before { 
+.socials::before {
     content: "";
     position: absolute;
-    width: 6px;
+    top: 390px;
+    bottom: 0;
+    left: 0; 
+    width: 6px; 
+    height: 247px;
     background-color: white;
-    border-radius: 6px;
-    left: 40px; 
-    top: 0;
-    height: 100%; 
+    border-radius: 3px; 
 }
 
-.socials::after { 
+.socials::after {
     content: "";
     position: absolute;
-    width: 6px;
+    top: -110px;
+    bottom: 0;
+    right: 0; 
+    width: 6px; 
+    height: 247px;
     background-color: white;
-    border-radius: 6px;
-    right: 40px;
-    top: 0;
-    height: 100%;
-    display: none;
+    border-radius: 3px; 
+    display: block; 
 }
-
 
 .kontakt {
     display: flex;
     flex-direction: row; 
-    align-items: center;
+    align-items: center; 
     gap: 35px;
     cursor: pointer;
-    padding: 10px 0; 
-    transition: background-color 0.3s ease;
+    padding: 5px 0; 
+    transition: background-color 0.3s ease; 
+    width: 100%; 
+    justify-content: center; 
 }
 
 .kontakt img {
-    width: 56px;
+    width: 56px; 
     height: 56px;
-    flex-shrink: 0;
+    flex-shrink: 0; 
 }
 
-.kontakt-info { 
+.kontakt-info {
     margin: 0;
-    font-size: 36px;
+    font-size: 36px; 
     color: white;
     text-decoration: none;
     line-height: 1.4;
-    display: block; 
+    display: block;
+    text-align: center; 
 }
 
 .kontakt-info a {
     color: white;
     text-decoration: none;
+    font-weight: normal;
 }
 
 .kontakt-info a:hover {
