@@ -516,6 +516,42 @@ article[class^="card-"] img {
 
 /*<!--------------------------------podujatia------------------------------>*/
 
+/* Predvolene skryjeme mobilnú verziu obrázkov */
+.obrazky-mobile-mobile-only {
+    display: none;
+}
+
+/* Predvolene zobrazíme desktop/tablet verziu obrázkov */
+.obrazky-desktop-tablet-only {
+    position: relative;
+    width: 831px;
+    height: 602px; /* Ponechané fixné pre desktop rozloženie */
+    margin: 0 auto;
+    display: block; /* Zabezpečí, že je kontajner viditeľný na desktope/tablete */
+}
+
+.obrazky-desktop-tablet-only img:first-child {
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 501px;
+    height: 419px;
+    object-fit: cover;
+    border-radius: 8px; /* Zaoblené rohy obrázkov */
+    z-index: 1;
+}
+
+.obrazky-desktop-tablet-only img:last-child {
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    width: 501px;
+    height: 419px;
+    object-fit: cover;
+    border-radius: 8px; /* Zaoblené rohy obrázkov */
+    z-index: 2;
+}
+
 .podujatia {
     width: 1440px;
     margin: 0 auto;
@@ -527,10 +563,11 @@ article[class^="card-"] img {
     gap: 60px;
     align-items: stretch;
     position: relative;
+    box-sizing: border-box;
 }
 
 .podujatia h1 {
-    writing-mode: vertical-lr;
+    writing-mode: vertical-lr; /* Vertikálny text pre desktop */
     text-orientation: upright;
     font-size: 128px;
     letter-spacing: 30px;
@@ -540,6 +577,7 @@ article[class^="card-"] img {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Zabraňuje zmenšeniu nadpisu */
 }
 
 .container {
@@ -548,6 +586,7 @@ article[class^="card-"] img {
     flex-direction: column;
     gap: 60px;
     position: relative;
+    flex-grow: 1; /* Kontajner zaberá zvyšný priestor */
 }
 
 .text {
@@ -564,37 +603,10 @@ article[class^="card-"] img {
     font-size: 24px;
 }
 
-.obrazky {
-    position: relative;
-    width: 831px;
-    height: 602px;
-    margin: 0 auto;
-}
-
-.obrazky img:first-child {
-    position: absolute;
-    top: 0;
-    left: -40px;
-    width: 501px;
-    height: 419px;
-    object-fit: cover;
-    z-index: 1;
-}
-
-.obrazky img:last-child {
-    position: absolute;
-    top: 200px;
-    left: 300px;
-    width: 501px;
-    height: 419px;
-    object-fit: cover;
-    z-index: 2;
-}
-
 .texty {
     position: relative;
     flex: 1;
-    height: 1647px;
+    height: auto; /* Zmenené na auto, aby sa prispôsobilo obsahu */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -612,20 +624,22 @@ article[class^="card-"] img {
 
 .texty::before {
     left: 0;
-    top: -30px;
+    top: -30px; /* Zarovnané s horným okrajom text-wrapper */
 }
 
 .texty::after {
     right: 0;
-    bottom: -30px;
+    bottom: -30px; /* Zarovnané s horným okrajom text-wrapper */
 }
 
 .text-wrapper {
     display: flex;
     flex-direction: column;
     gap: 215px;
-    padding: 0 40px;
+    padding: 0 40px; /* Odsadenie textu od čiar */
     max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .toggle-container {
@@ -642,7 +656,7 @@ article[class^="card-"] img {
 }
 
 .toggle-arrow.rotated {
-    transform: rotate(180deg);
+    transform: rotate(180deg); /* Otočenie šípky */
 }
 
 .expandable-text {
@@ -659,6 +673,7 @@ article[class^="card-"] img {
 }
 
 
+/* Media Queries pre tablety (menej ako 1200px) */
 @media (max-width: 1200px) {
     .podujatia {
         width: 920px;
@@ -685,18 +700,18 @@ article[class^="card-"] img {
         font-size: 20px;
     }
 
-    .obrazky {
+    .obrazky-desktop-tablet-only {
         width: 700px;
         height: 500px;
     }
 
-    .obrazky img:first-child {
+    .obrazky-desktop-tablet-only img:first-child {
         width: 400px;
         height: 330px;
         left: -30px;
     }
 
-    .obrazky img:last-child {
+    .obrazky-desktop-tablet-only img:last-child {
         width: 400px;
         height: 330px;
         top: 180px;
@@ -709,13 +724,20 @@ article[class^="card-"] img {
         padding-bottom: 40px;
     }
 
-    .texty::before,
+    .texty::before {
+        height: 361px; 
+        top: 0;
+        bottom: 0;
+    }
+
     .texty::after {
-        height: 260px;
+        height: 361px; 
+        top: 930px;
+        bottom: 0;
     }
 
     .text-wrapper {
-        padding: 0 20px;
+        padding: 0 30px;
         gap: 160px;
         max-width: 840px;
     }
@@ -730,118 +752,204 @@ article[class^="card-"] img {
 }
 
 @media (max-width: 412px) {
+
+    /* Na mobile skryjeme desktop/tablet verziu obrázkov */
+    .obrazky-desktop-tablet-only {
+        display: none;
+    }
+
+    /* Na mobile zobrazíme mobilnú verziu obrázkov */
+    .obrazky-mobile-mobile-only {
+        display: flex;
+        flex-direction: column; /* Obrázky pod sebou */
+        gap: 15px; /* Medzera medzi jednotlivými obrázkami */
+        width: 100%; /* Zaberá celú šírku rodiča (.text-wrapper) */
+        align-items: center; /* Centrovanie obrázkov v stĺpci */
+        height: auto;
+        margin-top: 20px; /* Medzera nad blokom obrázkov */
+        margin-bottom: 20px; /* Medzera pod blokom obrázkov */
+        padding: 0;
+    }
+
+    .obrazky-mobile-mobile-only img {
+        width: 100%;
+        max-width: 260px; /* Max. šírka obrázka vzhľadom na 300px kontajner s paddingom (300 - 2*20 = 260) */
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50px;
+        margin: 0 auto;
+        display: block;
+    }
+
     .podujatia {
         width: 100%;
         flex-direction: column;
         padding: 20px 0;
         align-items: center;
         gap: 20px;
+        min-height: auto;
+        color: white;
+        font-family: Arial, sans-serif;
     }
 
+    /* Nadpis PODUJATIA zostáva mimo .container, len ho vycentrujeme a pridáme medzeru */
     .podujatia h1 {
         writing-mode: horizontal-tb;
         font-size: 40px;
         letter-spacing: normal;
-        margin-bottom: 20px;
+        margin-bottom: 20px; /* Medzera pod nadpisom */
         width: 100%;
         text-align: center;
         height: auto;
+        margin-right: 0;
     }
 
     .container {
-        width: 300px;
+        width: 300px; /* Pevná šírka kontajnera pre mobil */
         padding: 20px;
         border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background-color: #5A5A5A;
-        gap: 20px;
+        border: 3px solid white; /* Biela čiara okolo kontajnera */
+        display: flex;
+        flex-direction: column; /* Udrží všetok obsah v stĺpci */
+        align-items: center;
+        gap: 0; /* Changed to 0, since text-wrapper has its own gap and images have margins */
+        box-sizing: border-box;
     }
 
     .texty {
         height: auto;
         padding: 0;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0; /* Changed to 0, because text-wrapper already has its gap */
     }
 
     .texty::before,
     .texty::after {
-        display: none;
+        display: none; /* Skryje vertikálne čiary na mobile */
     }
 
     .text-wrapper {
         padding: 0;
-        gap: 20px;
+        gap: 20px; /* Medzery medzi horny.text, obrazky-mobile-mobile-only a spodny.text */
         width: 100%;
         max-width: 100%;
-    }
-
-    .text {
-        max-width: 100%;
-        text-align: left;
-    }
-
-    .horny.text p,
-    .spodny.text p {
-        font-size: 16px;
-    }
-
-    .obrazky {
-        position: static;
-        width: 100%;
-        height: auto;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        margin: 0;
+        align-items: center;
     }
 
-    .obrazky img:first-child,
-    .obrazky img:last-child {
-        position: static;
+    .horny.text,
+    .spodny.text { /* Both should be visible on mobile and styled equally */
         width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* Spacing between p and toggle-container */
     }
 
-    .toggle-container {
-        display: block; /* Zobrazenie šípky len na mobile */
-        margin-top: 10px;
-    }
-
-    /* Štýly pre zbalený text na mobile (skrátenie) */
-    .expandable-text.collapsed {
-        max-height: 100px; /* Nastavte výšku, aby sa zobrazil iba skrátený text */
-        overflow: hidden;
-        position: relative; /* Pre gradient */
-        margin-bottom: 0;
-        padding-top: 0;
+    /* Key styles for .expandable-text on mobile */
+    .expandable-text {
+        font-size: 16px;
+        text-align: center;
+        max-height: 100px; /* Collapsed height */
+        overflow: hidden; /* Hide overflowing text */
+        position: relative;
+        transition: max-height 0.3s ease-out; /* Smooth transition */
+        width: 100%;
         padding-bottom: 0;
+        margin: 0;
+        box-sizing: border-box;
     }
 
-    /* Gradient pre "fade out" efekt na zbalenom texte */
-    .expandable-text.collapsed::after {
+    /* 'collapsed' class explicitly defines the truncated state */
+    .expandable-text.collapsed {
+        max-height: 100px;
+        overflow: hidden;
+    }
+
+    /* 'expanded' class defines the expanded state */
+    .expandable-text.expanded {
+        max-height: 9999px; /* A very large height to ensure all content is visible */
+        overflow: visible;
+    }
+
+    /* Gradient fade for truncated text */
+    .expandable-text::after {
         content: "";
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 50px; /* Výška gradientu */
-        background: linear-gradient(to top, #5A5A5A, rgba(90, 90, 90, 0)); /* Farba pozadia kontajnera */
-        display: block; /* Zobrazí gradient len keď je zbalený */
+        height: 50px; /* Height of the gradient */
+        display: block; /* Show by default for collapsed state */
+        pointer-events: none; /* Allows clicking on text beneath the gradient */
     }
 
-    /* Štýly pre zobrazený text na mobile */
-    .expandable-text.expanded {
-        max-height: 500px; /* Dostatočná výška pre zobrazenie celého textu */
-        opacity: 1;
-        margin-bottom: 10px;
-    }
-
-    /* Odstránime gradient, keď je text rozbalený */
+    /* Hide the gradient when the text is expanded */
     .expandable-text.expanded::after {
         display: none;
+    }
+
+    /* Show the gradient only when the text is in collapsed state */
+    .expandable-text.collapsed::after {
+        display: block;
+    }
+
+    /* Make sure visible-part is always inline when content is manipulated */
+    .visible-part {
+        display: inline;
+    }
+
+    /* On mobile, hidden-part is initially 'display: none' as the JS will manage its visibility by adding/removing it */
+    .hidden-part {
+        /* This rule is not strictly necessary if JS is always rewriting innerHTML,
+           but keeps consistent behavior if JS somehow fails or is partially applied. */
+        display: inline; /* This will be overridden by JS for collapsed state */
+    }
+
+
+    .toggle-container {
+        /* On mobile, .toggle-container should be displayed by default,
+           JS then hides it if the text is short and doesn't need collapsing. */
+        display: block;
+        margin-top: 0;
+        margin-bottom: 10px;
+        cursor: pointer;
+        text-align: center;
+        width: 100%;
+    }
+
+    .toggle-arrow {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    .toggle-arrow.rotated {
+        transform: rotate(180deg); /* Rotates the arrow */
+    }
+
+    /* The following middle-toggle-arrow rules were not directly addressed in the prompt
+       but were in the provided code. I'm keeping them but note they might be redundant
+       if the only expand/collapse mechanism is the .toggle-arrow for .expandable-text. */
+    .middle-toggle-container {
+        text-align: center;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+
+    .middle-toggle-arrow {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.3s ease;
+        filter: invert(100%);
+    }
+
+    .middle-toggle-arrow.rotated {
+        transform: rotate(180deg);
     }
 }
 
@@ -991,6 +1099,7 @@ footer {
     display: flex;
     justify-content: center; 
     min-height: 200px;
+    box-sizing: border-box;
 }
 
 .kontakty {
@@ -1153,72 +1262,64 @@ h1.napis-kontakty {
 }
 
 @media (max-width: 412px) {
-    footer {
-        padding: 20px 0;
-    }
-
-    .kontakty {
-        width: 100%;
-        padding: 0 10px;
-        flex-direction: column;
-        gap: 20px;
-    }
-
     .border {
-        width: 300px; 
-        height: auto;
+        width: 300px; /* Pevná šírka boxu pre mobil */
+        flex-direction: column; /* Vertikálne usporiadanie */
         padding: 20px;
-        gap: 20px; 
+        gap: 20px;
+        border: 3px solid white; /* Jemný okraj */
+        box-shadow: none; /* Odstránime tieň, ak bol predtým */
     }
 
-    .napis-kontakty {
-        font-size: 40px; 
-        margin-bottom: 0px;
+    h1.napis-kontakty {
+        writing-mode: horizontal-tb; /* Horizontálny text pre mobil*/
+        font-size: 40px;
+        letter-spacing: normal;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+        height: auto;
     }
 
     .socials {
-        gap: 20px;
-        padding-left: 0; 
-        align-items: center; 
+        width: 100%;
+        align-items: center; /* Zarovnanie na stred pre ikony a text */
+        gap: 15px; /* Menšia medzera medzi ikonami */
+        padding: 0; /* Žiadne odsadenie, pretože čiary sú skryté */
     }
 
+    /* Skrytie vertikálnych čiar na mobiloch */
     .socials::before,
     .socials::after {
         display: none;
     }
 
     .kontakt {
-        flex-direction: column; 
-        align-items: center; 
-        gap: 10px; 
-        width: fit-content; 
-        padding: 10px; 
-        margin-left: auto; 
-        margin-right: auto;
+        flex-direction: column; /* Ikona nad textom */
+        gap: 5px; /* Menšia medzera medzi ikonou a textom */
+        width: auto; /* Prispôsobenie šírky obsahu */
+        margin-bottom: 10px; /* Medzera medzi každou položkou kontaktu */
     }
 
-    .kontakt img {
-        width: 36px; 
-        height: 36px;
+    .kontakt img.kontakt-icon {
+        width: 48px; /* Ikony môžu byť trochu väčšie na mobile */
+        height: 48px;
     }
 
     .kontakt-info {
-        display: none;
-        white-space: nowrap; 
-        text-align: center; 
+        font-size: 16px; /* Menšia veľkosť písma pre mobil */
+        text-align: center; /* Centrovanie textu pod ikonou */
+        height: 0; /* Skryje text na začiatku */
+        overflow: hidden; /* Skryje pretečenie */
+        opacity: 0; /* Nastaví transparentnosť */
+        transition: height 0.3s ease-out, opacity 0.3s ease-out; /* Animácia */
+        padding-top: 0; /* Odstráni padding pre animáciu */
+        width: 100%; /* Text zaberie celú šírku pre centrovanie */
     }
 
     .kontakt-info.show {
-        display: block;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-    .border {
-        width: 300px;
-        height: auto;
-        padding: 20px;
-        gap: 20px;
-        border: 3px solid white; 
+        height: auto; /* Zobrazí text */
+        opacity: 1; /* Zobrazí text */
+        padding-top: 5px; /* Pridá trochu paddingu po zobrazení */
     }
 }
