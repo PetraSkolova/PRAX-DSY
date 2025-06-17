@@ -38,7 +38,7 @@ body {
     overflow-x: hidden;
 }
 
-body.no-scroll { /* Used by JS to prevent scrolling when menu is open */
+body.no-scroll { 
     overflow: hidden;
 }
 
@@ -172,22 +172,20 @@ header{
         align-items: center;
         padding: 20px 16px;
         width: 100%;
-        max-width: 300px; /* Constrain header block width */
-        margin: 0 auto; /* Center the header block */
+        max-width: 300px; 
+        margin: 0 auto; 
         box-sizing: border-box;
     }
 
     .logo {
-        width: 80px; /* Keep logo size as desired */
+        width: 80px; 
         margin-bottom: 0;
     }
 
-    /* Hide your existing <nav> on mobile */
     .container-header nav {
         display: none;
     }
 
-    /* Hamburger Menu Icon Positioning */
     .hamburger-menu {
         display: flex;
         flex-direction: column;
@@ -197,12 +195,9 @@ header{
         cursor: pointer;
         z-index: 1100;
 
-        /* Precise Positioning for Alignment */
-        position: fixed; /* Keep it fixed to the viewport */
-        top: 45px; /* Adjust this value to vertically align with the logo */
-        right: calc(50% - 150px + 20px); /* Position relative to the 300px block and 20px from its right edge */
-                                        /* (50% - 150px) gives the left edge of the 300px centered block.
-                                           Add 20px for padding from the right of that block. */
+        position: fixed; 
+        top: 45px; 
+        right: calc(50% - 150px + 20px); 
         transition: all 0.3s ease-in-out;
     }
 
@@ -214,7 +209,6 @@ header{
         transition: all 0.3s ease-in-out;
     }
 
-    /* Hamburger animation (already provided, keeping for context) */
     .hamburger-menu.open .bar:nth-child(1) {
         transform: translateY(13px) rotate(45deg);
     }
@@ -225,9 +219,8 @@ header{
         transform: translateY(-13px) rotate(-45deg);
     }
 
-    /* Mobile Navigation Overlay */
     .mobile-nav-overlay {
-        position: fixed; /* Make the overlay fixed at the top */
+        position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
@@ -251,57 +244,54 @@ header{
         visibility: visible;
     }
 
-    .mobile-nav-overlay ul { /* Styles for the list inside the overlay */
+    .mobile-nav-overlay ul { 
         list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 25px; /* Space between menu items */
-        width: auto; /* Allow content to define width */
+        gap: 25px; 
+        width: auto; 
     }
 
     .mobile-nav-overlay ul li a {
         text-decoration: none;
-        color: white; /* Default text color */
-        font-size: 30px; /* Larger font size for mobile menu items */
-        padding: 10px 20px; /* Larger hit area */
-        border-radius: 10px; /* Rounded corners for background */
+        color: white; 
+        font-size: 30px; 
+        padding: 10px 20px; 
+        border-radius: 10px; 
         transition: background-color 0.3s ease, color 0.3s ease;
-        display: block; /* Make the whole padding area clickable */
-        text-align: center; /* Center text within padding */
-        font-family: 'Poppins', sans-serif; /* Use your main font */
+        display: block; 
+        text-align: center; 
+        font-family: 'Poppins', sans-serif; 
         font-weight: bold;
     }
 
-    /* Hover and Active states for mobile menu items */
     .mobile-nav-overlay ul li a:hover {
-        background-color: rgba(49, 53, 65, 0.7); /* Darker background on hover */
-        color: white; /* Text color remains white */
+        background-color: rgba(49, 53, 65, 0.7); 
+        color: white; 
     }
 
-    .mobile-nav-overlay ul li a.active-link { /* Class added by JavaScript */
-        background-color: rgba(49, 53, 65, 0.7); /* Dark background for active link */
-        color: white; /* Text color remains white */
+    .mobile-nav-overlay ul li a.active-link { 
+        background-color: rgba(49, 53, 65, 0.7); 
+        color: white; 
     }
 
-    /* Hide the special quote on mobile */
     .mobile-nav-overlay ul li a.special-quote {
         display: none;
     }
 }
 
-/* Desktop styles: show original nav, hide mobile elements */
-@media (min-width: 413px) { /* Adjust breakpoint as needed */
+@media (min-width: 413px) { 
     .container-header nav {
-        display: block; /* Show desktop nav */
+        display: block; 
     }
     .hamburger-menu, .mobile-nav-overlay {
-        display: none; /* Hide mobile elements */
+        display: none; 
     }
     .container-header {
-        justify-content: center; /* Center desktop header content */
-        padding: 40px 0; /* Revert desktop padding */
+        justify-content: center; 
+        padding: 40px 0; 
     }
 }
 
@@ -483,21 +473,21 @@ header{
     }
 
     .txt {
-        order: 1; /* Place .txt content first */
+        order: 1; 
         width: 100%;
         padding: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: #313541; /* Default text color for the section */
+        color: #313541; 
     }
 
     .picture {
-        order: 2; /* Place .picture content second (at the bottom) */
+        order: 2; 
         width: 100%;
         display: flex;
         justify-content: center;
-        margin-top: 30px; /* Space between the text content and the image */
+        margin-top: 30px; 
     }
 
     .picture img {
@@ -512,13 +502,13 @@ header{
         flex-direction: column;
         align-items: center;
         gap: 0px;
-        margin-bottom: 20px; /* Space below the number/title block before paragraph */
+        margin-bottom: 20px; 
         width: auto;
         padding: 0;
     }
 
     .cislo img {
-        width: auto; /* Larger number image for prominence */
+        width: auto; 
         height: auto;
         margin-bottom: 0;
     }
@@ -527,19 +517,18 @@ header{
         display: none;
     }
 
-    /* SWAPPED STYLES HERE */
-    .txt-1 { /* Now the SUBTITLE (e.g., "Preteky") */
-        font-size: 20px; /* Smaller font size for the subtitle */
-        color: #313541; /* Faded color */
-        font-weight: bolder; /* Less bold */
+    .txt-1 { 
+        font-size: 20px;
+        color: #313541; 
+        font-weight: bolder; 
         margin-top: 5px; 
         margin-bottom: -85px;
     }
 
-    .txt-2 { /* Now the MAIN TITLE (e.g., "O.klube") */
-        font-size: 48px; /* Larger font size for the main title */
-        color: #313541; /* Darker color */
-        font-weight: bolder; /* More bold */
+    .txt-2 { 
+        font-size: 48px; 
+        color: #313541; 
+        font-weight: bolder; 
         margin: 0; 
         margin-top: 20px;
         margin-bottom: 60px;
@@ -553,7 +542,7 @@ header{
         padding: 0 15px;
         font-size: 18px;
         line-height: 1.6;
-        color: white; /* Main paragraph text remains white on grey card */
+        color: white;
         box-sizing: border-box;
     }
 }
@@ -793,8 +782,8 @@ article[class^="card-"] img {
         width: 300px;
         height: auto;
         padding-top: 120px;
-        position: relative; /* Added this to contain the absolutely positioned image */
-        overflow: visible; /* Changed from default to ensure image isn't clipped */
+        position: relative; 
+        overflow: visible; 
     }
 
     article[class^="card-"]:hover {
@@ -806,8 +795,8 @@ article[class^="card-"] img {
         width: 160px;
         height: 160px;
         top: -80px;
-        left: 50%; /* Center the image horizontally */
-        transform: translateX(-50%); /* Adjust for exact centering */
+        left: 50%; 
+        transform: translateX(-50%); 
     }
 
     .card-1 {
@@ -841,18 +830,16 @@ article[class^="card-"] img {
 
 /*<!--------------------------------podujatia------------------------------>*/
 
-/* Predvolene skryjeme mobilnú verziu obrázkov */
 .obrazky-mobile-mobile-only {
     display: none;
 }
 
-/* Predvolene zobrazíme desktop/tablet verziu obrázkov */
 .obrazky-desktop-tablet-only {
     position: relative;
     width: 831px;
-    height: 602px; /* Ponechané fixné pre desktop rozloženie */
+    height: 602px; 
     margin: 0 auto;
-    display: block; /* Zabezpečí, že je kontajner viditeľný na desktope/tablete */
+    display: block; 
 }
 
 .obrazky-desktop-tablet-only img:first-child {
@@ -862,7 +849,7 @@ article[class^="card-"] img {
     width: 501px;
     height: 419px;
     object-fit: cover;
-    border-radius: 8px; /* Zaoblené rohy obrázkov */
+    border-radius: 8px; 
     z-index: 1;
 }
 
@@ -873,7 +860,7 @@ article[class^="card-"] img {
     width: 501px;
     height: 419px;
     object-fit: cover;
-    border-radius: 8px; /* Zaoblené rohy obrázkov */
+    border-radius: 8px; 
     z-index: 2;
 }
 
@@ -892,7 +879,7 @@ article[class^="card-"] img {
 }
 
 .podujatia h1 {
-    writing-mode: vertical-lr; /* Vertikálny text pre desktop */
+    writing-mode: vertical-lr; 
     text-orientation: upright;
     font-size: 128px;
     letter-spacing: 30px;
@@ -902,7 +889,7 @@ article[class^="card-"] img {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; /* Zabraňuje zmenšeniu nadpisu */
+    flex-shrink: 0; 
 }
 
 .container {
@@ -911,7 +898,7 @@ article[class^="card-"] img {
     flex-direction: column;
     gap: 60px;
     position: relative;
-    flex-grow: 1; /* Kontajner zaberá zvyšný priestor */
+    flex-grow: 1; 
 }
 
 .text {
@@ -931,7 +918,7 @@ article[class^="card-"] img {
 .texty {
     position: relative;
     flex: 1;
-    height: auto; /* Zmenené na auto, aby sa prispôsobilo obsahu */
+    height: auto; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -949,19 +936,19 @@ article[class^="card-"] img {
 
 .texty::before {
     left: 0;
-    top: -30px; /* Zarovnané s horným okrajom text-wrapper */
+    top: -30px; 
 }
 
 .texty::after {
     right: 0;
-    bottom: -30px; /* Zarovnané s horným okrajom text-wrapper */
+    bottom: -30px; 
 }
 
 .text-wrapper {
     display: flex;
     flex-direction: column;
     gap: 215px;
-    padding: 0 40px; /* Odsadenie textu od čiar */
+    padding: 0 40px; 
     max-width: 900px;
     width: 100%;
     box-sizing: border-box;
@@ -971,7 +958,7 @@ article[class^="card-"] img {
     text-align: center;
     margin-top: 20px;
     cursor: pointer;
-    display: none; /* Šípka je predvolene skrytá pre desktop/tablet */
+    display: none; 
 }
 
 .toggle-arrow {
@@ -981,24 +968,20 @@ article[class^="card-"] img {
 }
 
 .toggle-arrow.rotated {
-    transform: rotate(180deg); /* Otočenie šípky */
+    transform: rotate(180deg); 
 }
 
 .expandable-text {
-    /* Na desktop/tablet (predvolene) nebude max-height obmedzená, text bude celý */
     overflow: visible;
-    max-height: none; /* Uistite sa, že na desktope je text vždy celý */
+    max-height: none;
     opacity: 1;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
 }
 
-/* Na desktope a tablete by text nemal mať žiadny gradient */
 .expandable-text::after {
     display: none;
 }
 
-
-/* Media Queries pre tablety (menej ako 1200px) */
 @media (max-width: 1200px) {
     .podujatia {
         width: 920px;
@@ -1068,37 +1051,35 @@ article[class^="card-"] img {
     }
 
     .toggle-container {
-        display: none; /* Zabezpečí, že šípka je skrytá aj na tabletoch */
+        display: none; 
     }
 
     .expandable-text {
-        max-height: none; /* Na tablete je text vždy celý */
+        max-height: none; 
     }
 }
 
 @media (max-width: 412px) {
 
-    /* Na mobile skryjeme desktop/tablet verziu obrázkov */
     .obrazky-desktop-tablet-only {
         display: none;
     }
 
-    /* Na mobile zobrazíme mobilnú verziu obrázkov */
     .obrazky-mobile-mobile-only {
         display: flex;
-        flex-direction: column; /* Obrázky pod sebou */
-        gap: 15px; /* Medzera medzi jednotlivými obrázkami */
-        width: 100%; /* Zaberá celú šírku rodiča (.text-wrapper) */
-        align-items: center; /* Centrovanie obrázkov v stĺpci */
+        flex-direction: column; 
+        gap: 15px; 
+        width: 100%; 
+        align-items: center; 
         height: auto;
-        margin-top: 20px; /* Medzera nad blokom obrázkov */
-        margin-bottom: 20px; /* Medzera pod blokom obrázkov */
+        margin-top: 20px; 
+        margin-bottom: 20px; 
         padding: 0;
     }
 
     .obrazky-mobile-mobile-only img {
         width: 100%;
-        max-width: 260px; /* Max. šírka obrázka vzhľadom na 300px kontajner s paddingom (300 - 2*20 = 260) */
+        max-width: 260px; 
         height: 180px;
         object-fit: cover;
         border-radius: 50px;
@@ -1117,12 +1098,11 @@ article[class^="card-"] img {
         font-family: Arial, sans-serif;
     }
 
-    /* Nadpis PODUJATIA zostáva mimo .container, len ho vycentrujeme a pridáme medzeru */
     .podujatia h1 {
         writing-mode: horizontal-tb;
         font-size: 40px;
         letter-spacing: normal;
-        margin-bottom: 20px; /* Medzera pod nadpisom */
+        margin-bottom: 20px; 
         width: 100%;
         text-align: center;
         height: auto;
@@ -1130,14 +1110,14 @@ article[class^="card-"] img {
     }
 
     .container {
-        width: 300px; /* Pevná šírka kontajnera pre mobil */
+        width: 300px; 
         padding: 20px;
         border-radius: 8px;
-        border: 3px solid white; /* Biela čiara okolo kontajnera */
+        border: 3px solid white; 
         display: flex;
-        flex-direction: column; /* Udrží všetok obsah v stĺpci */
+        flex-direction: column; 
         align-items: center;
-        gap: 0; /* Changed to 0, since text-wrapper has its own gap and images have margins */
+        gap: 0; 
         box-sizing: border-box;
     }
 
@@ -1148,17 +1128,17 @@ article[class^="card-"] img {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        gap: 0; /* Changed to 0, because text-wrapper already has its gap */
+        gap: 0; 
     }
 
     .texty::before,
     .texty::after {
-        display: none; /* Skryje vertikálne čiary na mobile */
+        display: none; 
     }
 
     .text-wrapper {
         padding: 0;
-        gap: 20px; /* Medzery medzi horny.text, obrazky-mobile-mobile-only a spodny.text */
+        gap: 20px; 
         width: 100%;
         max-width: 100%;
         display: flex;
@@ -1167,78 +1147,66 @@ article[class^="card-"] img {
     }
 
     .horny.text,
-    .spodny.text { /* Both should be visible on mobile and styled equally */
+    .spodny.text { 
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px; /* Spacing between p and toggle-container */
+        gap: 10px; 
     }
 
-    /* Key styles for .expandable-text on mobile */
     .expandable-text {
         font-size: 16px;
         text-align: center;
-        max-height: 100px; /* Collapsed height */
-        overflow: hidden; /* Hide overflowing text */
+        max-height: 100px; 
+        overflow: hidden; 
         position: relative;
-        transition: max-height 0.3s ease-out; /* Smooth transition */
+        transition: max-height 0.3s ease-out; 
         width: 100%;
         padding-bottom: 0;
         margin: 0;
         box-sizing: border-box;
     }
 
-    /* 'collapsed' class explicitly defines the truncated state */
     .expandable-text.collapsed {
         max-height: 100px;
         overflow: hidden;
     }
 
-    /* 'expanded' class defines the expanded state */
     .expandable-text.expanded {
-        max-height: 9999px; /* A very large height to ensure all content is visible */
+        max-height: 9999px; 
         overflow: visible;
     }
 
-    /* Gradient fade for truncated text */
     .expandable-text::after {
         content: "";
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 50px; /* Height of the gradient */
-        display: block; /* Show by default for collapsed state */
-        pointer-events: none; /* Allows clicking on text beneath the gradient */
+        height: 50px; 
+        display: block; 
+        pointer-events: none;
     }
 
-    /* Hide the gradient when the text is expanded */
     .expandable-text.expanded::after {
         display: none;
     }
 
-    /* Show the gradient only when the text is in collapsed state */
     .expandable-text.collapsed::after {
         display: block;
     }
 
-    /* Make sure visible-part is always inline when content is manipulated */
     .visible-part {
         display: inline;
     }
 
-    /* On mobile, hidden-part is initially 'display: none' as the JS will manage its visibility by adding/removing it */
     .hidden-part {
-        /* This rule is not strictly necessary if JS is always rewriting innerHTML,
-           but keeps consistent behavior if JS somehow fails or is partially applied. */
-        display: inline; /* This will be overridden by JS for collapsed state */
+        display: inline; 
     }
 
 
     .toggle-container {
-        /* On mobile, .toggle-container should be displayed by default,
-           JS then hides it if the text is short and doesn't need collapsing. */
         display: block;
         margin-top: 0;
         margin-bottom: 10px;
@@ -1254,12 +1222,9 @@ article[class^="card-"] img {
     }
 
     .toggle-arrow.rotated {
-        transform: rotate(180deg); /* Rotates the arrow */
+        transform: rotate(180deg); 
     }
 
-    /* The following middle-toggle-arrow rules were not directly addressed in the prompt
-       but were in the provided code. I'm keeping them but note they might be redundant
-       if the only expand/collapse mechanism is the .toggle-arrow for .expandable-text. */
     .middle-toggle-container {
         text-align: center;
         margin: 10px 0;
@@ -1421,10 +1386,10 @@ article[class^="card-"] img {
 footer {
     color: white;
     font-family: Arial, sans-serif;
-    padding: 60px 0; /* Increased padding */
+    padding: 60px 0; 
     display: flex;
     justify-content: center; 
-    min-height: 300px; /* Increased min-height */
+    min-height: 300px; 
     box-sizing: border-box;
 }
 
@@ -1441,7 +1406,7 @@ footer {
 .border {
     width: 1152px;
     height: auto;
-    padding: 40px; /* Increased padding */
+    padding: 40px; 
     border-radius: 8px;
     display: flex; 
     flex-direction: row-reverse; 
@@ -1462,16 +1427,16 @@ h1.napis-kontakty {
     font-weight: bold;
     flex-shrink: 0; 
     text-align: left; 
-    padding-right: 20px; /* Added spacing */
+    padding-right: 20px; 
 }
 
 .socials {
     display: flex;
     flex-direction: column; 
-    align-items: center; /* Changed to flex-start */
-    gap: 40px; /* Increased gap */
+    align-items: center; 
+    gap: 40px; 
     position: relative;
-    padding: 0 60px; /* Increased padding */
+    padding: 0 60px; 
     flex-grow: 1; 
 }
 
@@ -1499,9 +1464,9 @@ h1.napis-kontakty {
     display: flex;
     flex-direction: row; 
     align-items: center; 
-    gap: 40px; /* Increased gap */
+    gap: 40px; 
     cursor: pointer;
-    padding: 15px 0; /* Increased padding */
+    padding: 15px 0; 
     transition: background-color 0.3s ease; 
     width: 100%; 
     justify-content: start; 
@@ -1518,14 +1483,14 @@ h1.napis-kontakty {
     font-size: 36px; 
     color: white;
     text-decoration: none;
-    line-height: 1.6; /* Increased line height */
+    line-height: 1.6; 
     display: block;
-    text-align: left; /* Changed to left */
+    text-align: left; 
 }
 
 .kontakt-info p {
-    margin: 15px 0; /* Added paragraph spacing */
-    font-size: 24px; /* Adjusted font size */
+    margin: 15px 0; 
+    font-size: 24px; 
 }
 
 .kontakt-info a {
@@ -1533,17 +1498,16 @@ h1.napis-kontakty {
     text-decoration: none;
     font-weight: normal;
     display: block;
-    margin: 10px 0; /* Added link spacing */
+    margin: 10px 0; 
 }
 
 .kontakt-info a:hover {
     text-decoration: underline;
 }
 
-/* Additional spacing for specific elements */
 .kontakt-info br {
     display: block;
-    margin: 10px 0; /* Increased line break spacing */
+    margin: 10px 0; 
     content: " ";
 }
 
@@ -1600,16 +1564,16 @@ h1.napis-kontakty {
 
 @media (max-width: 412px) {
     .border {
-        width: 300px; /* Pevná šírka boxu pre mobil */
-        flex-direction: column; /* Vertikálne usporiadanie */
+        width: 300px; 
+        flex-direction: column; 
         padding: 20px;
         gap: 20px;
-        border: 3px solid white; /* Jemný okraj */
-        box-shadow: none; /* Odstránime tieň, ak bol predtým */
+        border: 3px solid white; 
+        box-shadow: none; 
     }
 
     h1.napis-kontakty {
-        writing-mode: horizontal-tb; /* Horizontálny text pre mobil*/
+        writing-mode: horizontal-tb; 
         font-size: 40px;
         letter-spacing: normal;
         margin-bottom: 10px;
@@ -1620,44 +1584,43 @@ h1.napis-kontakty {
 
     .socials {
         width: 100%;
-        align-items: center; /* Zarovnanie na stred pre ikony a text */
-        gap: 15px; /* Menšia medzera medzi ikonami */
-        padding: 0; /* Žiadne odsadenie, pretože čiary sú skryté */
+        align-items: center; 
+        gap: 15px; 
+        padding: 0; 
     }
 
-    /* Skrytie vertikálnych čiar na mobiloch */
     .socials::before,
     .socials::after {
         display: none;
     }
 
     .kontakt {
-        flex-direction: column; /* Ikona nad textom */
-        gap: 5px; /* Menšia medzera medzi ikonou a textom */
-        width: auto; /* Prispôsobenie šírky obsahu */
-        margin-bottom: 10px; /* Medzera medzi každou položkou kontaktu */
+        flex-direction: column; 
+        gap: 5px; 
+        width: auto; 
+        margin-bottom: 10px; 
     }
 
     .kontakt img.kontakt-icon {
-        width: 48px; /* Ikony môžu byť trochu väčšie na mobile */
+        width: 48px; 
         height: 48px;
     }
 
     .kontakt-info {
-        font-size: 16px; /* Menšia veľkosť písma pre mobil */
-        text-align: center; /* Centrovanie textu pod ikonou */
-        height: 0; /* Skryje text na začiatku */
-        overflow: hidden; /* Skryje pretečenie */
-        opacity: 0; /* Nastaví transparentnosť */
-        transition: height 0.3s ease-out, opacity 0.3s ease-out; /* Animácia */
-        padding-top: 0; /* Odstráni padding pre animáciu */
-        width: 100%; /* Text zaberie celú šírku pre centrovanie */
+        font-size: 16px; 
+        text-align: center; 
+        height: 0; 
+        overflow: hidden; 
+        opacity: 0; 
+        transition: height 0.3s ease-out, opacity 0.3s ease-out; 
+        padding-top: 0; 
+        width: 100%; 
     }
 
     .kontakt-info.show {
-        height: auto; /* Zobrazí text */
-        opacity: 1; /* Zobrazí text */
-        padding-top: 5px; /* Pridá trochu paddingu po zobrazení */
+        height: auto; 
+        opacity: 1; 
+        padding-top: 5px; 
         font-weight: bold;
     }
 

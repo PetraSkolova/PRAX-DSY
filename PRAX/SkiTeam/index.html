@@ -57,27 +57,22 @@
             const mobileNavOverlay = document.getElementById('mobileNavOverlay');
             const mobileNavLinks = mobileNavOverlay.querySelectorAll('ul li a');
 
-            // Function to toggle the mobile menu
             function toggleMobileMenu() {
                 hamburgerMenu.classList.toggle('open');
                 mobileNavOverlay.classList.toggle('active');
-                // Prevent scrolling when menu is open
                 document.body.classList.toggle('no-scroll');
             }
 
-            // Event listener for hamburger icon click
             if (hamburgerMenu) {
                 hamburgerMenu.addEventListener('click', toggleMobileMenu);
             }
 
-            // Event listener for mobile navigation links click
             mobileNavLinks.forEach(link => {
                 link.addEventListener('click', function(event) {
                     // Close the menu
                     toggleMobileMenu();
 
-                    // Smooth scroll to section
-                    event.preventDefault(); // Prevent default anchor jump
+                    event.preventDefault(); 
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
 
@@ -88,12 +83,10 @@
                         });
                     }
 
-                    // Update active link state
                     updateActiveLink(targetId);
                 });
             });
 
-            // Function to update the active link based on scroll position
             function updateActiveLink(currentHash) {
                 mobileNavLinks.forEach(link => {
                     link.classList.remove('active-link');
@@ -103,12 +96,11 @@
                 });
             }
 
-            // Observe sections to update active link on scroll
             const sections = document.querySelectorAll('section[id]');
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.5 // Adjust as needed, 0.5 means 50% of the section is visible
+                threshold: 0.5 
             };
 
             const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -123,12 +115,9 @@
                 sectionObserver.observe(section);
             });
 
-            // Initialize active link on page load based on current URL hash
-            // Using 'load' event ensures all content is loaded and offsets are correct
             window.addEventListener('load', () => {
                 if (window.location.hash) {
                     updateActiveLink(window.location.hash);
-                    // Also scroll to it if page loads with a hash
                     const initialTarget = document.querySelector(window.location.hash);
                     if (initialTarget) {
                         window.scrollTo({
@@ -137,7 +126,6 @@
                         });
                     }
                 } else {
-                    // If no hash, consider the first section as active initially
                     if (sections.length > 0) {
                         updateActiveLink('#' + sections[0].id);
                     }
@@ -311,7 +299,6 @@
                 <div class="texty">
                 <div class="text-wrapper">
 
-                    <!-- Horný text -->
                     <article class="horny text">
                     <p class="expandable-text" data-fulltext-id="horny-fulltext">
                         <span class="visible-part">
@@ -328,7 +315,6 @@
                     </div>
                     </article>
 
-                    <!-- Obrázky -->
                     <div class="obrazky-desktop-tablet-only">
                     <img src="pictures/podujatia 1.png" alt="preteky 1" />
                     <img src="pictures/podujatia 2.png" alt="preteky 2" />
@@ -339,7 +325,6 @@
                     <img src="pictures/podujatia 2.png" alt="preteky 2" />
                     </div>
 
-                    <!-- Spodný text -->
                     <article class="spodny text">
                     <p class="expandable-text" data-fulltext-id="spodny-fulltext">
                         <span class="visible-part">
@@ -361,7 +346,6 @@
                 </div>
             </div>
 
-            <!-- JavaScript -->
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                 function isMobile() {
@@ -372,7 +356,6 @@
 
                 const expandableTextElements = document.querySelectorAll('.expandable-text');
 
-                // Ulož originálny HTML obsah namiesto textContent
                 expandableTextElements.forEach(textElement => {
                     const fulltextId = textElement.dataset.fulltextId;
                     if (!fullTexts[fulltextId]) {
@@ -389,7 +372,6 @@
                     const toggleContainer = textArticle ? textArticle.querySelector('.toggle-container') : null;
                     const toggleArrow = toggleContainer ? toggleContainer.querySelector('.toggle-arrow') : null;
 
-                    // Obnov HTML obsah
                     textElement.innerHTML = originalHTML;
                     textElement.style.maxHeight = 'none';
                     textElement.style.overflow = 'visible';
@@ -420,7 +402,6 @@
                     });
                 }
 
-                // Kliknutie na šípku
                 document.querySelectorAll('.toggle-arrow').forEach(arrow => {
                     arrow.addEventListener('click', function () {
                     if (isMobile()) {
@@ -444,7 +425,6 @@
                     });
                 });
 
-                // Inicializácia
                 applyTextState();
                 window.addEventListener('resize', applyTextState);
                 });
@@ -458,9 +438,9 @@
                     const toggleContainer = textEl.parentElement.querySelector(".toggle-container");
                     const toggleArrow = toggleContainer?.querySelector(".toggle-arrow");
 
-                    // Skontroluj, či text presahuje 100px
+                    //mozno skusit toto vymazat
                     if (textEl.scrollHeight <= 10) {
-                        toggleContainer.style.display = "none"; // Skryť šípku ak nie je čo rozbaliť
+                        toggleContainer.style.display = "none"; 
                         return;
                     }
 
