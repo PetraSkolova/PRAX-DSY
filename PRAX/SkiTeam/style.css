@@ -131,7 +131,7 @@ header{
     font-weight: 500;
 }
 
-@media (max-width: 1200px) {
+@media screen and (min-width: 413px) and (max-width: 1200px) {
     .wrapper {
         max-width: 920px;
         width: 100%;
@@ -172,13 +172,13 @@ header{
         align-items: center;
         padding: 20px 16px;
         width: 100%;
-        max-width: 300px; 
-        margin: 0 auto; 
+        max-width: 300px;
+        margin: 0 auto;
         box-sizing: border-box;
     }
 
     .logo {
-        width: 80px; 
+        width: 80px;
         margin-bottom: 0;
     }
 
@@ -187,17 +187,17 @@ header{
     }
 
     .hamburger-menu {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 10001;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
         width: 35px;
-        height: 30px;
+        height: 25px;
         cursor: pointer;
-        z-index: 1100;
-
-        position: fixed; 
-        top: 45px; 
-        right: calc(50% - 150px + 20px); 
+        background-color: transparent;
         transition: all 0.3s ease-in-out;
     }
 
@@ -210,17 +210,19 @@ header{
     }
 
     .hamburger-menu.open .bar:nth-child(1) {
-        transform: translateY(13px) rotate(45deg);
+        transform: translateY(10px) rotate(45deg);
     }
+
     .hamburger-menu.open .bar:nth-child(2) {
         opacity: 0;
     }
+
     .hamburger-menu.open .bar:nth-child(3) {
-        transform: translateY(-13px) rotate(-45deg);
+        transform: translateY(-10px) rotate(-45deg);
     }
 
     .mobile-nav-overlay {
-        position: fixed; 
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -235,46 +237,41 @@ header{
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-        z-index: 999;
+        z-index: 10000;
     }
-
 
     .mobile-nav-overlay.active {
         opacity: 1;
         visibility: visible;
     }
 
-    .mobile-nav-overlay ul { 
+    .mobile-nav-overlay ul {
         list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
-        gap: 25px; 
-        width: auto; 
+        gap: 25px;
+        width: auto;
     }
 
     .mobile-nav-overlay ul li a {
         text-decoration: none;
-        color: white; 
-        font-size: 30px; 
-        padding: 10px 20px; 
-        border-radius: 10px; 
+        color: white;
+        font-size: 30px;
+        padding: 10px 20px;
+        border-radius: 10px;
         transition: background-color 0.3s ease, color 0.3s ease;
-        display: block; 
-        text-align: center; 
-        font-family: 'Poppins', sans-serif; 
+        display: block;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
         font-weight: bold;
     }
 
-    .mobile-nav-overlay ul li a:hover {
-        background-color: rgba(49, 53, 65, 0.7); 
-        color: white; 
-    }
-
-    .mobile-nav-overlay ul li a.active-link { 
-        background-color: rgba(49, 53, 65, 0.7); 
-        color: white; 
+    .mobile-nav-overlay ul li a:hover,
+    .mobile-nav-overlay ul li a.active-link {
+        background-color: rgba(49, 53, 65, 0.7);
+        color: white;
     }
 
     .mobile-nav-overlay ul li a.special-quote {
@@ -385,7 +382,7 @@ header{
     font-family: 'Bricolage Grotesque', sans-serif;
 }
 
-@media (max-width: 1200px) {
+@media screen and (min-width: 413px) and (max-width: 1200px) {
     .o-nas {
         max-width: 920px;
         padding: 48px 24px;
@@ -458,7 +455,7 @@ header{
         max-width: 300px;
         width: 100%;
         padding: 20px 20px 30px 20px;
-        border-radius: 16px;
+        border-radius: 20px;
         border: 3px solid white;
         display: flex;
         align-items: center;
@@ -480,6 +477,16 @@ header{
         flex-direction: column;
         align-items: center;
         color: #313541; 
+    }
+
+    .txt p {
+    max-height: 90px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    }
+
+    .txt.expanded p {
+        max-height: 1000px; 
     }
 
     .picture {
@@ -517,6 +524,33 @@ header{
         display: none;
     }
 
+    .rozbal-sipka {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+
+    .rozbal-sipka img {
+        width: 32px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .txt p {
+        max-height: 90px;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    .txt.expanded p {
+        max-height: 1000px;
+    }
+
+    .txt.expanded .rozbal-sipka img {
+        transform: rotate(180deg);
+    }
+
     .txt-1 { 
         font-size: 20px;
         color: #313541; 
@@ -544,6 +578,12 @@ header{
         line-height: 1.6;
         color: white;
         box-sizing: border-box;
+    }
+}
+
+@media (min-width: 413px) {
+    .rozbal-sipka {
+        display: none;
     }
 }
 
@@ -702,7 +742,7 @@ article[class^="card-"] img {
     color: black;
 }
 
-@media (max-width: 1200px) {
+@media screen and (min-width: 413px) and (max-width: 1200px) {
     .nasi-treneri {
         width: 920px;
         padding: 40px 20px;
@@ -982,7 +1022,7 @@ article[class^="card-"] img {
     display: none;
 }
 
-@media (max-width: 1200px) {
+@media screen and (min-width: 413px) and (max-width: 1200px) {
     .podujatia {
         width: 920px;
         gap: 40px;
@@ -1061,6 +1101,15 @@ article[class^="card-"] img {
 
 @media (max-width: 412px) {
 
+    .texty::before,
+    .texty::after {
+        display: none;
+        content: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+
     .obrazky-desktop-tablet-only {
         display: none;
     }
@@ -1112,7 +1161,7 @@ article[class^="card-"] img {
     .container {
         width: 300px; 
         padding: 20px;
-        border-radius: 8px;
+        border-radius: 16px;
         border: 3px solid white; 
         display: flex;
         flex-direction: column; 
@@ -1129,11 +1178,6 @@ article[class^="card-"] img {
         align-items: center;
         width: 100%;
         gap: 0; 
-    }
-
-    .texty::before,
-    .texty::after {
-        display: none; 
     }
 
     .text-wrapper {
@@ -1158,7 +1202,7 @@ article[class^="card-"] img {
     .expandable-text {
         font-size: 16px;
         text-align: center;
-        max-height: 100px; 
+        max-height: 120px; 
         overflow: hidden; 
         position: relative;
         transition: max-height 0.3s ease-out; 
@@ -1166,11 +1210,6 @@ article[class^="card-"] img {
         padding-bottom: 0;
         margin: 0;
         box-sizing: border-box;
-    }
-
-    .expandable-text.collapsed {
-        max-height: 100px;
-        overflow: hidden;
     }
 
     .expandable-text.expanded {
@@ -1189,12 +1228,25 @@ article[class^="card-"] img {
         pointer-events: none;
     }
 
-    .expandable-text.expanded::after {
-        display: none;
+    .expandable-text::after {
+        display: none !important;
     }
 
-    .expandable-text.collapsed::after {
-        display: block;
+    .container::before,
+    .container::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .texty,
+    .text-wrapper,
+    .horny.text,
+    .spodny.text {
+        border: none !important;
+    }
+
+    .expandable-text.expanded::after {
+        display: none;
     }
 
     .visible-part {
@@ -1204,7 +1256,6 @@ article[class^="card-"] img {
     .hidden-part {
         display: inline; 
     }
-
 
     .toggle-container {
         display: block;
@@ -1225,21 +1276,20 @@ article[class^="card-"] img {
         transform: rotate(180deg); 
     }
 
-    .middle-toggle-container {
-        text-align: center;
-        margin: 10px 0;
-        cursor: pointer;
-    }
+    .expandable-text {
+    font-size: 16px;
+    text-align: center;
+    max-height: 120px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease-out;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-    .middle-toggle-arrow {
-        width: 25px;
-        height: 25px;
-        transition: transform 0.3s ease;
-        filter: invert(100%);
-    }
-
-    .middle-toggle-arrow.rotated {
-        transform: rotate(180deg);
+    .expandable-text.expanded {
+        max-height: 1000px; 
+        overflow: visible;
     }
 }
 
@@ -1294,7 +1344,7 @@ article[class^="card-"] img {
     border-radius: 8px;
 }
 
-@media (max-width: 1200px) {
+@media screen and (min-width: 413px) and (max-width: 1200px) {
     .galeria {
         padding: 40px 20px;
         max-width: 920px;
@@ -1577,6 +1627,7 @@ h1.napis-kontakty {
         font-size: 40px;
         letter-spacing: normal;
         margin-bottom: 10px;
+        padding: 0;
         width: 100%;
         text-align: center;
         height: auto;

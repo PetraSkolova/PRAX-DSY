@@ -12,128 +12,46 @@
 </head>
 <body>
 <!----------------------------header------------------------->
-    <header class="main-container" id="domov">
-        <div class="wrapper">
-            <div class="container-header">
-                <img class="logo" src="pictures/logo.png" alt="logo"> 
-                <nav>
-                    <ul>
-                        <li><a href="#domov">Domov</a></li>
-                        <li><a href="#onas">O nás</a></li>
-                        <li><a href="#treneri">Naši tréneri</a></li>
-                        <li><a href="#4" class="no-hover special-quote">Čerstvý sneh, čistý vzduch a <br>
-                            nekonečná radosť – presne o <br>tom 
-                            je lyžiarska sezóna u nás!"</a></li>
-                        <li><a href="#podujatia">Podujatia</a></li>
-                        <li><a href="#galeria">Galéria</a></li>
-                        <li><a href="#kontakty">Kontakty</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
         <div class="hamburger-menu" id="hamburgerMenu">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
 
-        <nav class="mobile-nav-overlay" id="mobileNavOverlay">
-            <ul>
-                <li><a href="#domov">Domov</a></li>
-                <li><a href="#onas">O nás</a></li>
-                <li><a href="#treneri">Naši tréneri</a></li>
-                <li><a href="#podujatia">Podujatia</a></li>
-                <li><a href="#galeria">Galéria</a></li>
-                <li><a href="#kontakty">Kontakty</a></li>
-            </ul>
-        </nav>
+        <header class="main-container" id="domov">
+            <nav class="mobile-nav-overlay" id="mobileNavOverlay">
+                <ul>
+                    <li><a href="#domov">Domov</a></li>
+                    <li><a href="#onas">O nás</a></li>
+                    <li><a href="#treneri">Naši tréneri</a></li>
+                    <li><a href="#podujatia">Podujatia</a></li>
+                    <li><a href="#galeria">Galéria</a></li>
+                    <li><a href="#kontakty">Kontakty</a></li>
+                </ul>
+            </nav>
 
-    </header>
+            <div class="wrapper">
+                <div class="container-header">
+                    <img class="logo" src="pictures/logo.png" alt="logo">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburgerMenu = document.getElementById('hamburgerMenu');
-            const mobileNavOverlay = document.getElementById('mobileNavOverlay');
-            const mobileNavLinks = mobileNavOverlay.querySelectorAll('ul li a');
-
-            function toggleMobileMenu() {
-                hamburgerMenu.classList.toggle('open');
-                mobileNavOverlay.classList.toggle('active');
-                document.body.classList.toggle('no-scroll');
-            }
-
-            if (hamburgerMenu) {
-                hamburgerMenu.addEventListener('click', toggleMobileMenu);
-            }
-
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    // Close the menu
-                    toggleMobileMenu();
-
-                    event.preventDefault(); 
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-
-                    updateActiveLink(targetId);
-                });
-            });
-
-            function updateActiveLink(currentHash) {
-                mobileNavLinks.forEach(link => {
-                    link.classList.remove('active-link');
-                    if (link.getAttribute('href') === currentHash) {
-                        link.classList.add('active-link');
-                    }
-                });
-            }
-
-            const sections = document.querySelectorAll('section[id]');
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.5 
-            };
-
-            const sectionObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        updateActiveLink('#' + entry.target.id);
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-            window.addEventListener('load', () => {
-                if (window.location.hash) {
-                    updateActiveLink(window.location.hash);
-                    const initialTarget = document.querySelector(window.location.hash);
-                    if (initialTarget) {
-                        window.scrollTo({
-                            top: initialTarget.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                } else {
-                    if (sections.length > 0) {
-                        updateActiveLink('#' + sections[0].id);
-                    }
-                }
-            });
-        });
-    </script>
-
+                    <nav>
+                        <ul>
+                            <li><a href="#domov">Domov</a></li>
+                            <li><a href="#onas">O nás</a></li>
+                            <li><a href="#treneri">Naši tréneri</a></li>
+                            <li><a href="#4" class="no-hover special-quote">
+                                Čerstvý sneh, čistý vzduch a <br>
+                                nekonečná radosť – presne o <br>
+                                tom je lyžiarska sezóna u nás!"
+                            </a></li>
+                            <li><a href="#podujatia">Podujatia</a></li>
+                            <li><a href="#galeria">Galéria</a></li>
+                            <li><a href="#kontakty">Kontakty</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>  
 <!----------------------------o nas------------------------->
     <main>
         <section class="o-nas" id="onas">
@@ -154,6 +72,9 @@
                     zručností a organizovanie súťaží. Od svojho vzniku sme sa rozrástli a
                     získali množstvo úspechov na národnej úrovni. Naše hodnoty zahŕňajú 
                     športového ducha, tímovú prácu a fair play.</p>
+                    <span class="rozbal-sipka">
+                        <img src="pictures/sipka dole.png" alt="rozbal" />
+                    </span>
                 </article>
             </div>
 
@@ -173,6 +94,9 @@
                     Kategória pretekári sa delí na predžiakov a žiakov, ktorý sa pravidelne
                     zúčastňujú pretekov Slovenského pohára. Obe kategórie sa zúčastňujú  
                     miestnych pretekov a regionálnych pretekov.</p> 
+                    <span class="rozbal-sipka">
+                        <img src="pictures/sipka dole.png" alt="rozbal" />
+                    </span>
                 </article>
             </div>
 
@@ -194,6 +118,9 @@
                     pôsobia 2 kvalifikovaní tréneri s dlhoročnou praxou. 
                     Tréningy najčastejšie mávame v lyžiarskom stredisku Sportcentrum 
                     Oščadnica a v Snowparadise Veľká Rača.</p> 
+                    <span class="rozbal-sipka">
+                        <img src="pictures/sipka dole.png" alt="rozbal" />
+                    </span>
                 </article>
             </div>
         </section>
@@ -292,174 +219,57 @@
                 </div>
             </section>
         </section>
-<!----------------------------podujatia------------------ak budem stihat dorobit sipky------->
+<!----------------------------podujatia------------------------->
         <section class="podujatia" id="podujatia">
             <h1>PODUJATIA</h1>
             <div class="container">
                 <div class="texty">
-                <div class="text-wrapper">
+                    <div class="text-wrapper">
 
-                    <article class="horny text">
-                    <p class="expandable-text" data-fulltext-id="horny-fulltext">
-                        <span class="visible-part">
-                        Od roku 2017 každoročne organizujeme verejné preteky v stredisku Sportcentrum Oščadnica.
-                        Súťaží sa v kategóriách a o najlepší čas z celých pretekov,
-                        </span>
-                        <span class="hidden-part">
-                        kde najrýchlejší získa pohár starostu obce Oščadnica. Ďalej organizujeme verejné preteky 
-                        v stredisku Snowparadise Veľká Rača. Taktiež v tomto stredisku organizujeme aj Valentínsky pretek, kde ľudia tvoria páry muž a žena. Kategórie sa delia podľa súčtu rokov konkrétnej dvojice.
-                        </span>
-                    </p>
-                    <div class="toggle-container">
-                        <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="horny">
+                        <article class="horny text">
+                            <p class="expandable-text" data-fulltext-id="horny-fulltext">
+                                <span class="visible-part">
+                                    Od roku 2017 každoročne organizujeme verejné preteky v stredisku Sportcentrum Oščadnica.
+                                    Súťaží sa v kategóriách a o najlepší čas z celých pretekov,
+                                </span>
+                                <span class="hidden-part">
+                                    kde najrýchlejší získa pohár starostu obce Oščadnica. Ďalej organizujeme verejné preteky
+                                    v stredisku Snowparadise Veľká Rača. Taktiež v tomto stredisku organizujeme aj Valentínsky pretek, kde ľudia tvoria páry muž a žena. Kategórie sa delia podľa súčtu rokov konkrétnej dvojice.
+                                </span>
+                            </p>
+                            <div class="toggle-container">
+                                <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="horny">
+                            </div>
+                        </article>
+
+                        <div class="obrazky-desktop-tablet-only">
+                            <img src="pictures/podujatia 1.png" alt="preteky 1" />
+                            <img src="pictures/podujatia 2.png" alt="preteky 2" />
+                        </div>
+
+                        <div class="obrazky-mobile-mobile-only">
+                            <img src="pictures/podujatia 1.png" alt="preteky 1" />
+                            <img src="pictures/podujatia 2.png" alt="preteky 2" />
+                        </div>
+
+                        <article class="spodny text">
+                            <p class="expandable-text" data-fulltext-id="spodny-fulltext">
+                                <span class="visible-part">
+                                    V tomto stredisku každoročne organizujeme aj preteky na Memoriál Petra Harvana.
+                                    Párkrát sa u nás konali aj preteky Slovenského pohára a máme v pláne
+                                </span>
+                                <span class="hidden-part">
+                                    tieto preteky tu organizovať aj naďalej. Vďaka skvelej spolupráci s členmi SkiTeam-u a aj zamestnancov
+                                    Snowparadise Veľká Rača si pochvaľovali naše podmienky na pretekanie.
+                                </span>
+                            </p>
+                            <div class="toggle-container">
+                                <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="spodny">
+                            </div>
+                        </article>
                     </div>
-                    </article>
-
-                    <div class="obrazky-desktop-tablet-only">
-                    <img src="pictures/podujatia 1.png" alt="preteky 1" />
-                    <img src="pictures/podujatia 2.png" alt="preteky 2" />
-                    </div>
-
-                    <div class="obrazky-mobile-mobile-only">
-                    <img src="pictures/podujatia 1.png" alt="preteky 1" />
-                    <img src="pictures/podujatia 2.png" alt="preteky 2" />
-                    </div>
-
-                    <article class="spodny text">
-                    <p class="expandable-text" data-fulltext-id="spodny-fulltext">
-                        <span class="visible-part">
-                        V tomto stredisku každoročne organizujeme aj preteky na Memoriál Petra Harvana.
-                        Párkrát sa u nás konali aj preteky Slovenského pohára a máme v pláne                    
-                        </span>
-                        <span class="hidden-part">
-                        tieto preteky
-                        tu organizovať aj naďalej. Vďaka skvelej spolupráci s členmi SkiTeam-u a aj zamestnancov
-                        Snowparadise Veľká Rača si pochvaľovali naše podmienky na pretekanie.                       
-                        </span>
-                    </p>
-                    <div class="toggle-container">
-                        <img src="pictures/sipka dole.png" alt="Rozbaliť" class="toggle-arrow" data-target="spodny">
-                    </div>
-                    </article>
-
-                </div>
                 </div>
             </div>
-
-            <script>
-                document.addEventListener('DOMContentLoaded', function () {
-                function isMobile() {
-                    return window.innerWidth <= 412;
-                }
-
-                const fullTexts = {};
-
-                const expandableTextElements = document.querySelectorAll('.expandable-text');
-
-                expandableTextElements.forEach(textElement => {
-                    const fulltextId = textElement.dataset.fulltextId;
-                    if (!fullTexts[fulltextId]) {
-                    fullTexts[fulltextId] = textElement.innerHTML.trim(); // DÔLEŽITÉ
-                    }
-                });
-
-                function applyTextState() {
-                    expandableTextElements.forEach(textElement => {
-                    const fulltextId = textElement.dataset.fulltextId;
-                    const originalHTML = fullTexts[fulltextId];
-
-                    const textArticle = textElement.closest('.text');
-                    const toggleContainer = textArticle ? textArticle.querySelector('.toggle-container') : null;
-                    const toggleArrow = toggleContainer ? toggleContainer.querySelector('.toggle-arrow') : null;
-
-                    textElement.innerHTML = originalHTML;
-                    textElement.style.maxHeight = 'none';
-                    textElement.style.overflow = 'visible';
-
-                    const isContentLong = textElement.scrollHeight > 100;
-
-                    if (isMobile()) {
-                        if (isContentLong) {
-                        textElement.classList.remove('expanded');
-                        textElement.classList.add('collapsed');
-                        textElement.innerHTML = originalHTML;
-
-                        if (toggleContainer) toggleContainer.style.display = 'block';
-                        if (toggleArrow) toggleArrow.classList.remove('rotated');
-                        } else {
-                        textElement.classList.remove('collapsed');
-                        textElement.classList.add('expanded');
-                        textElement.innerHTML = originalHTML;
-                        if (toggleContainer) toggleContainer.style.display = 'none';
-                        }
-                    } else {
-                        textElement.classList.remove('collapsed');
-                        textElement.classList.add('expanded');
-                        textElement.innerHTML = originalHTML;
-                        if (toggleContainer) toggleContainer.style.display = 'none';
-                        if (toggleArrow) toggleArrow.classList.remove('rotated');
-                    }
-                    });
-                }
-
-                document.querySelectorAll('.toggle-arrow').forEach(arrow => {
-                    arrow.addEventListener('click', function () {
-                    if (isMobile()) {
-                        const textArticle = this.closest('.text');
-                        const expandableText = textArticle.querySelector('.expandable-text');
-                        const fulltextId = expandableText.dataset.fulltextId;
-                        const originalHTML = fullTexts[fulltextId];
-
-                        if (expandableText.classList.contains('collapsed')) {
-                        expandableText.classList.remove('collapsed');
-                        expandableText.classList.add('expanded');
-                        this.classList.add('rotated');
-                        expandableText.innerHTML = originalHTML;
-                        } else {
-                        expandableText.classList.remove('expanded');
-                        expandableText.classList.add('collapsed');
-                        this.classList.remove('rotated');
-                        expandableText.innerHTML = originalHTML;
-                        }
-                    }
-                    });
-                });
-
-                applyTextState();
-                window.addEventListener('resize', applyTextState);
-                });
-            </script>
-
-            <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const expandableTexts = document.querySelectorAll(".expandable-text");
-
-                expandableTexts.forEach((textEl) => {
-                    const toggleContainer = textEl.parentElement.querySelector(".toggle-container");
-                    const toggleArrow = toggleContainer?.querySelector(".toggle-arrow");
-
-                    //mozno skusit toto vymazat
-                    if (textEl.scrollHeight <= 10) {
-                        toggleContainer.style.display = "none"; 
-                        return;
-                    }
-
-                    toggleContainer.addEventListener("click", function () {
-                        const isCollapsed = textEl.classList.contains("collapsed");
-
-                        if (isCollapsed) {
-                            textEl.classList.remove("collapsed");
-                            textEl.classList.add("expanded");
-                            toggleArrow?.classList.add("rotated");
-                        } else {
-                            textEl.classList.add("collapsed");
-                            textEl.classList.remove("expanded");
-                            toggleArrow?.classList.remove("rotated");
-                        }
-                    });
-                });
-            });
-            </script>
         </section>
 <!----------------------------galeria------------------------->
         <section class="galeria" id="galeria">
@@ -536,42 +346,7 @@
                     </div>
                 </section>
         </footer>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const kontaktItems = document.querySelectorAll('.kontakt');
-
-                function isMobileView() {
-                    return window.matchMedia('(max-width: 412px)').matches;
-                }
-
-                kontaktItems.forEach(item => {
-                    item.addEventListener('click', function(event) {
-                        event.stopPropagation(); 
-                        
-                        const infoElement = this.querySelector('.kontakt-info');
-
-                        if (isMobileView() && infoElement) {
-                            infoElement.classList.toggle('show');
-                        }
-                    });
-                });
-                function handleResize() {
-                    kontaktItems.forEach(item => {
-                        const infoElement = item.querySelector('.kontakt-info');
-                        if (infoElement) {
-                            if (isMobileView()) {
-                                infoElement.classList.remove('show');
-                            } else {
-                                infoElement.classList.add('show');
-                            }
-                        }
-                    });
-                }
-                handleResize();
-                window.addEventListener('resize', handleResize);
-            });
-        </script>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
