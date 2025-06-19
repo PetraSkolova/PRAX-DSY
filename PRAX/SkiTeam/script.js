@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // EXPANDOVATEĽNÉ TEXTY (rozbal-sipka)
+
     document.querySelectorAll('.rozbal-sipka').forEach(button => {
         button.addEventListener('click', () => {
             const txtElement = button.closest('.txt');
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // PODUJATIA - Toggle expandable text
+    // PODUJATIA 
     document.querySelectorAll('.toggle-container').forEach(function (toggleContainer) {
         toggleContainer.addEventListener('click', function () {
             const article = toggleContainer.closest('article');
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // KONTAKTY (mobilná funkcionalita)
+    // KONTAKTY 
     const kontaktItems = document.querySelectorAll('.kontakt');
 
     function isMobileView() {
