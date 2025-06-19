@@ -1589,7 +1589,9 @@ h1.napis-kontakty {
     .socials {
         gap: 30px;
         padding-left: 80px; 
-        align-items: flex-start; 
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
     }
 
     .socials::before { 
@@ -1637,7 +1639,10 @@ h1.napis-kontakty {
         width: 100%;
         align-items: center; 
         gap: 15px; 
-        padding: 0; 
+        padding: 0;    
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
     }
 
     .socials::before,
