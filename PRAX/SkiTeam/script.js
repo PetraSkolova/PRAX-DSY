@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // HAMBURGER MENU TOGGLE
+    // HAMBURGER MENU 
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const mobileNavLinks = mobileNavOverlay ? mobileNavOverlay.querySelectorAll('ul li a') : [];
