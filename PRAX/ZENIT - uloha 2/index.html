@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderný Znovupoužiteľný Double Slider</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .double-slider-wrapper {
+            width: 300px;
+            height: 20px;
+            position: relative;
+            background-color: gray; 
+            border-radius: 9999px; 
+            overflow: hidden; 
+            user-select: none;
+            touch-action: none;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .double-slider-range {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background-color: #008000; 
+            border-radius: 9999px;
+            pointer-events: none;
+        }
+
+        .slider-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+            outline: none;
+            box-sizing: content-box;
+            border: 0px solid transparent;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .slider-thumb:hover {
+            transform: translate(-50%, -50%) scale(1.4);
+        }
+
+        .slider-thumb:focus-visible {
+            border: 10px solid #008000;
+            background-color: #ffffff;
+            z-index: 30;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <main class="flex flex-col items-center justify-center bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+        <h1 class="text-xl font-bold text-slate-800 mb-6 tracking-tight">Nastavenie rozsahu cien</h1>
+        
+        <div id="double-slider-container" class="my-6"></div>
+
+        <div class="mt-6 flex items-center justify-between w-full text-slate-600 font-medium text-sm bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <div>Minimálna: <span id="display-min" class="font-bold text-slate-900 text-base">10</span></div>
+            <div class="h-4 w-px bg-slate-300 mx-3"></div>
+            <div>Maximálna: <span id="display-max" class="font-bold text-slate-900 text-base">50</span></div>
+        </div>
+    </main>
+
+    <script>
+        class DoubleSliderComponent {
+            constructor(container, options = {}) {
+                this.container = container;
+                this.min = options.min ?? -5;
+                this.max = options.max ?? 130;
+                this.step = options.step ?? 10;
+                this.valueMin = options.valueMin ?? 10;
+                this.valueMax = options.valueMax ?? 50;
+                this.onChange = options.onChange || (() => {});
+
+                this.initDOM();
+                this.initListeners();
+                this.updateView();
+            }
+
+            initDOM() {
+                this.track = document.createElement('div');
+                this.track.className = 'double-slider-wrapper';
+
+                this.rangeBar = document.createElement('div');
+                this.rangeBar.className = 'double-slider-range';
+                this.track.appendChild(this.rangeBar);
+
+                this.thumbMin = document.createElement('div');
+                this.thumbMin.className = 'slider-thumb';
+                this.thumbMin.setAttribute('role', 'slider');
+                this.thumbMin.setAttribute('tabindex', '0');
+                this.thumbMin.setAttribute('aria-label', 'minimálna cena');
+                this.track.appendChild(this.thumbMin);
+
+                this.thumbMax = document.createElement('div');
+                this.thumbMax.className = 'slider-thumb';
+                this.thumbMax.setAttribute('role', 'slider');
+                this.thumbMax.setAttribute('tabindex', '0');
+                this.thumbMax.setAttribute('aria-label', 'maximálna cena');
+                this.track.appendChild(this.thumbMax);
+
+                this.container.innerHTML = '';
+                this.container.appendChild(this.track);
+            }
+
+            initListeners() {
+                this.track.addEventListener('pointerdown', (e) => {
+                    if (e.target.classList.contains('slider-thumb')) return;
+                    const rect = this.track.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const percentage = Math.max(0, Math.min(1, clickX / rect.width));
+                    const rawVal = this.min + percentage * (this.max - this.min);
+                    const steppedVal = this.snapToStep(rawVal);
+
+                    const distMin = Math.abs(steppedVal - this.valueMin);
+                    const distMax = Math.abs(steppedVal - this.valueMax);
+
+                    if (distMin < distMax || (distMin === distMax && steppedVal < this.valueMin)) {
+                        this.setValueMin(steppedVal);
+                        this.thumbMin.focus();
+                    } else {
+                        this.setValueMax(steppedVal);
+                        this.thumbMax.focus();
+                    }
+                });
+
+                this.setupDragHandler(this.thumbMin, 'min');
+                this.setupDragHandler(this.thumbMax, 'max');
+
+                this.thumbMin.addEventListener('keydown', (e) => this.handleKeydown(e, 'min'));
+                this.thumbMax.addEventListener('keydown', (e) => this.handleKeydown(e, 'max'));
+            }
+
+            setupDragHandler(thumb, type) {
+                let isDragging = false;
+
+                const onMove = (e) => {
+                    if (!isDragging) return;
+                    const rect = this.track.getBoundingClientRect();
+                    const clientX = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0);
+                    const positionX = clientX - rect.left;
+                    const percentage = Math.max(0, Math.min(1, positionX / rect.width));
+                    const rawVal = this.min + percentage * (this.max - this.min);
+                    const steppedVal = this.snapToStep(rawVal);
+
+                    if (type === 'min') {
+                        this.setValueMin(steppedVal);
+                    } else {
+                        this.setValueMax(steppedVal);
+                    }
+                };
+
+                const onEnd = () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        window.removeEventListener('pointermove', onMove);
+                        window.removeEventListener('pointerup', onEnd);
+                        window.removeEventListener('touchmove', onMove);
+                        window.removeEventListener('touchend', onEnd);
+                    }
+                };
+
+                thumb.addEventListener('pointerdown', (e) => {
+                    isDragging = true;
+                    e.stopPropagation();
+                    thumb.focus();
+                    window.addEventListener('pointermove', onMove);
+                    window.addEventListener('pointerup', onEnd);
+                });
+
+                thumb.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    e.stopPropagation();
+                    thumb.focus();
+                    window.addEventListener('touchmove', onMove, { passive: false });
+                    window.addEventListener('touchend', onEnd);
+                });
+            }
+
+            handleKeydown(e, type) {
+                let val = type === 'min' ? this.valueMin : this.valueMax;
+                const doubleStep = this.step * 2;
+
+                switch (e.key) {
+                    case 'ArrowLeft':
+                    case 'ArrowDown':
+                        val -= this.step;
+                        break;
+                    case 'ArrowRight':
+                    case 'ArrowUp':
+                        val += this.step;
+                        break;
+                    case 'PageUp':
+                        val += doubleStep;
+                        break;
+                    case 'PageDown':
+                        val -= doubleStep;
+                        break;
+                    case 'Home':
+                        val = this.min;
+                        break;
+                    case 'End':
+                        val = this.max;
+                        break;
+                    default:
+                        return;
+                }
+
+                e.preventDefault();
+
+                if (type === 'min') {
+                    this.setValueMin(val);
+                } else {
+                    this.setValueMax(val);
+                }
+            }
+
+            snapToStep(val) {
+                if (val >= this.max) return this.max;
+                if (val <= this.min) return this.min;
+
+                const stepped = Math.round((val - this.min) / this.step) * this.step + this.min;
+                const clamped = Math.max(this.min, Math.min(this.max, stepped));
+                const decimals = (this.step.toString().split('.')[1] || '').length;
+                return parseFloat(clamped.toFixed(decimals));
+            }
+
+            setValueMin(val) {
+                const rounded = this.snapToStep(val);
+                if (rounded <= this.valueMax) {
+                    this.valueMin = rounded;
+                } else {
+                    this.valueMin = this.valueMax;
+                }
+                this.updateView();
+                this.onChange({ min: this.valueMin, max: this.valueMax });
+            }
+
+            setValueMax(val) {
+                const rounded = this.snapToStep(val);
+                if (rounded >= this.valueMin) {
+                    this.valueMax = rounded;
+                } else {
+                    this.valueMax = this.valueMin;
+                }
+                this.updateView();
+                this.onChange({ min: this.valueMin, max: this.valueMax });
+            }
+
+            updateView() {
+                const trackWidth = 300;
+                const thumbWidth = 10;
+                const effectiveWidth = trackWidth - thumbWidth;
+
+                const span = this.max - this.min;
+                const minRatio = (this.valueMin - this.min) / span;
+                const maxRatio = (this.valueMax - this.min) / span;
+
+                const minPx = minRatio * effectiveWidth + (thumbWidth / 2);
+                const maxPx = maxRatio * effectiveWidth + (thumbWidth / 2);
+
+                this.thumbMin.style.left = `${minPx}px`;
+                this.thumbMax.style.left = `${maxPx}px`;
+
+                this.rangeBar.style.left = `${minPx - 5}px`;
+                this.rangeBar.style.width = `${(maxPx + 5) - (minPx - 5)}px`;
+
+                this.thumbMin.setAttribute('aria-valuenow', this.valueMin);
+                this.thumbMin.setAttribute('aria-valuemin', this.min);
+                this.thumbMin.setAttribute('aria-valuemax', this.valueMax);
+
+                this.thumbMax.setAttribute('aria-valuenow', this.valueMax);
+                this.thumbMax.setAttribute('aria-valuemin', this.valueMin);
+                this.thumbMax.setAttribute('aria-valuemax', this.max);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const root = document.getElementById('double-slider-container');
+            const displayMin = document.getElementById('display-min');
+            const displayMax = document.getElementById('display-max');
+
+            const slider = new DoubleSliderComponent(root, {
+                min: -5,
+                max: 130,
+                step: 10,
+                valueMin: 10,
+                valueMax: 50,
+                onChange: (values) => {
+                    displayMin.textContent = values.min;
+                    displayMax.textContent = values.max;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
