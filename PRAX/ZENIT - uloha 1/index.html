@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+            user-select: none;
+        }
+
+        .hlavny-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .pozicia {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stred-okno {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .tlacidlo {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .tlacidlo:hover {
+            background-color: #e6e6e6;
+        }
+
+        .tlacidlo:active {
+            transform: scale(0.98);
+        }
+
+        .obdlznik-kontajner {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .obdlznik {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            display: none;
+        }
+
+        .obdlznik.aktivny {
+            display: block;
+        }
+
+        .cervena { background-color: #ef4444; }
+        .modra { background-color: #3b82f6; }
+        .zelena { background-color: #22c55e; }
+        .zlta { background-color: #eab308; }
+        .cierna { background-color: #000000; }
+
+        .bodky-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            height: 16px;
+        }
+
+        .bodka {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .bodka.aktivna-bodka {
+            width: 12px;
+            height: 12px;
+            margin: -1px;
+            box-shadow: 0 0 0 1px #000000;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hlavny-box">
+        
+        <div id="pozicia-text" class="pozicia">1 / 5</div>
+
+        <div class="stred-okno">
+            <button id="predchadzajuci" class="tlacidlo">Predchádzajúci</button>
+
+            <div class="obdlznik-kontajner">
+                <div class="obdlznik aktivny cervena"></div>
+                <div class="obdlznik modra"></div>
+                <div class="obdlznik zelena"></div>
+                <div class="obdlznik zlta"></div>
+                <div class="obdlznik cierna"></div>
+            </div>
+
+            <button id="nasledujuci" class="tlacidlo">Nasledujúci</button>
+        </div>
+
+        <div class="bodky-box">
+            <span class="bodka cervena aktivna-bodka" data-index="0"></span>
+            <span class="bodka modra" data-index="1"></span>
+            <span class="bodka zelena" data-index="2"></span>
+            <span class="bodka zlta" data-index="3"></span>
+            <span class="bodka cierna" data-index="4"></span>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const zoznamPoloziek = document.querySelectorAll('.obdlznik');
+            const zoznamBodiek = document.querySelectorAll('.bodka');
+            const btnPred = document.getElementById('predchadzajuci');
+            const btnNasl = document.getElementById('nasledujuci');
+            const textPozicie = document.getElementById('pozicia-text');
+            
+            let aktualnyIndex = 0;
+            const celkovo = zoznamPoloziek.length;
+
+            function zmenSlajd(index) {
+                if (index < 0) {
+                    aktualnyIndex = celkovo - 1;
+                } else if (index >= celkovo) {
+                    aktualnyIndex = 0;
+                } else {
+                    aktualnyIndex = index;
+                }
+
+                zoznamPoloziek.forEach(function(polozka, i) {
+                    if (i === aktualnyIndex) {
+                        polozka.classList.add('aktivny');
+                    } else {
+                        polozka.classList.remove('aktivny');
+                    }
+                });
+
+                zoznamBodiek.forEach(function(b, i) {
+                    if (i === aktualnyIndex) {
+                        b.classList.add('aktivna-bodka');
+                    } else {
+                        b.classList.remove('aktivna-bodka');
+                    }
+                });
+
+                textPozicie.textContent = (aktualnyIndex + 1) + ' / ' + celkovo;
+            }
+
+            btnPred.addEventListener('click', function() {
+                zmenSlajd(aktualnyIndex - 1);
+            });
+
+            btnNasl.addEventListener('click', function() {
+                zmenSlajd(aktualnyIndex + 1);
+            });
+
+            zoznamBodiek.forEach(function(b) {
+                b.addEventListener('click', function(e) {
+                    const idx = parseInt(e.target.getAttribute('data-index'));
+                    zmenSlajd(idx);
+                });
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+                    e.preventDefault();
+                }
+
+                if (e.key === 'ArrowLeft') {
+                    zmenSlajd(aktualnyIndex - 1);
+                } else if (e.key === 'ArrowRight') {
+                    zmenSlajd(aktualnyIndex + 1);
+                } else if (e.key === 'Home') {
+                    zmenSlajd(0);
+                } else if (e.key === 'End') {
+                    zmenSlajd(celkovo - 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
